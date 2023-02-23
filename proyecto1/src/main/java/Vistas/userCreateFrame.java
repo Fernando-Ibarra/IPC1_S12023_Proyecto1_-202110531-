@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  *
  * @author fi944
  */
-public class userCreateFrame extends javax.swing.JFrame {
+public class userCreateFrame extends javax.swing.JFrame { 
 
     /**
      * Creates new form userCreateFrame
@@ -279,16 +279,25 @@ public class userCreateFrame extends javax.swing.JFrame {
             listUser.add(userCreate);
             System.out.println("USUARIO REGISTRADO");
             System.out.println(listUser);
+            JOptionPane.showMessageDialog(null, "USUARIO REGISTRADO");
         } else {
             JOptionPane.showMessageDialog(null, "CONTRASEÑA DEBE CONTENER AL MENOS UNA MAYÚSCULA, MINÚSCULA, NÚMERO Y CARÁCTER ESPECIAL");
         }
         
-        
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jTextField4.setText("");
+        jTextField5.setText("");
+        jTextField6.setText("");
+        jTextField7.setText("");
+        jTextField8.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Login log = new Login();
         log.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     
