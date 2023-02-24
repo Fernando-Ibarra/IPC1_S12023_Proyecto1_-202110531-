@@ -8,8 +8,6 @@ import Vistas.Login;
 import controlador.user;
 import static controlador.user.listUser;
 
-
-
 /**
  *
  * @author fi944

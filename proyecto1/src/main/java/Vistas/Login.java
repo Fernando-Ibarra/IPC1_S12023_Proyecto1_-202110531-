@@ -16,14 +16,16 @@ import javax.swing.JOptionPane;
 public class Login extends javax.swing.JFrame {
     
     menuAdmin menuA = new menuAdmin();
-    facturaFrame factu = new facturaFrame();
+    menuCliente mC = new menuCliente();
     userCreateFrame userFrame = new userCreateFrame();
+    public static int indexUser;
 
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
+        
     }
 
     /**
@@ -149,15 +151,18 @@ public class Login extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void access(String mail, String password, LinkedList<user> listUser){
-        for(user users:listUser){
-            if(users.getCorreo().equals(mail) && users.getPassword().equals(password)){
-                if(users.getRol().equals("admin")){
+    private void access(String mail, String password, LinkedList<user> listUser){        
+        for(int i=0; i<listUser.size();i++){
+            if(listUser.get(i).getCorreo().equals(mail) && listUser.get(i).getPassword().equals(password)){
+                if(listUser.get(i).getRol().equals("admin")){
                     menuA.setVisible(true);
                     this.dispose();
                     break;
-                } else if(users.getRol().equals("Individual") || users.getRol().equals("Empresarial")|| users.getRol().equals("Kiosco")) {
-                    factu.setVisible(true);
+                } else if(listUser.get(i).getRol().equals("Individual") || listUser.get(i).getRol().equals("Empresarial")|| listUser.get(i).getRol().equals("Kiosco")) {
+                    mC.setVisible(true);
+                    indexUser = i;
+                    System.out.println(listUser.get(indexUser).getDpi());
+                    System.out.println(indexUser);
                     this.dispose();
                     break;
                 }
