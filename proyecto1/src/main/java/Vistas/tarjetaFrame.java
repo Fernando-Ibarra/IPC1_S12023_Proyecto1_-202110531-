@@ -242,6 +242,14 @@ public class tarjetaFrame extends javax.swing.JFrame {
     
     public static void AddRowToJtable(LinkedList<tarjeta> listCard, int index){
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        // DELETE
+        if (model.getRowCount() > 0) {
+            for (int i = model.getRowCount() - 1; i > -1; i--) {
+                model.removeRow(i);
+            }
+        }
+        
+        // PUT
         for(int i=0; i<listCard.size(); i++){
             if(listCard.get(i).getDpi().equals(listUser.get(index).getDpi())){
                 model.addRow(new Object[]{listCard.get(i).getNombre(), listCard.get(i).getNumeroT(), listCard.get(i).getFechaVen()});

@@ -243,6 +243,14 @@ public class facturaFrame extends javax.swing.JFrame {
 
     public static void AddRowToJtable(LinkedList<factura> listFactura, int index){
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        // DELETE
+        if (model.getRowCount() > 0) {
+            for (int i = model.getRowCount() - 1; i > -1; i--) {
+                model.removeRow(i);
+            }
+        }
+        
+        // PUT
         for(int i=0; i<listFactura.size(); i++){
             if(listFactura.get(i).getDpi().equals(listUser.get(index).getDpi())){
                 model.addRow(new Object[]{listFactura.get(i).getNombre(), listFactura.get(i).getDireccion(), listFactura.get(i).getNit()});
