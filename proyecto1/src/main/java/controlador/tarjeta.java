@@ -34,8 +34,8 @@ public class tarjeta {
     public String getNumeroT() {
         String str = numeroT;
         int pos = numeroT.length()-4;
-	String prt1 = str.substring(0, pos);
-        String prt2 = str.substring(pos + 1);
+	String prt1 = str.substring(0, pos-1);
+        String prt2 = str.substring(pos);
         
         int largo = prt1.length();
         

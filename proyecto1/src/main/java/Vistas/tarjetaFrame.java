@@ -9,6 +9,7 @@ import controlador.tarjeta;
 import static controlador.tarjeta.listCard;
 import static controlador.user.listUser;
 import java.util.LinkedList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -75,6 +76,7 @@ public class tarjetaFrame extends javax.swing.JFrame {
         jLabel5.setText("Fecha de Vencimiento");
 
         jTextField3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jTextField3.setText("MM/YYYY");
 
         jButton1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton1.setText("REGISTRAR");
@@ -205,6 +207,7 @@ public class tarjetaFrame extends javax.swing.JFrame {
         
         tarjeta tjt = new tarjeta(name, numberT, date, dpi);
         listCard.add(tjt);
+        JOptionPane.showMessageDialog(null, "TARJETA REGISTRADA CORRECTAMENTE");
         AddRowToJtable(listCard, indexUs);
         jTextField1.setText("");
         jTextField2.setText("");
@@ -217,12 +220,12 @@ public class tarjetaFrame extends javax.swing.JFrame {
         String numberT = jTextField2.getText();
         String date = jTextField3.getText();
         int indexU = getIndex(name, listCard);
-        listCard.get(indexU).setNumeroT(numberT);
-        listCard.get(indexU).setFechaVen(date);
+        validate(indexU, listCard, numberT, date);
+        JOptionPane.showMessageDialog(null, "TARJETA ACTUALIZADA CORRECTAMENTE");
         AddRowToJtable(listCard, indexUs);
         jTextField1.setText("");
         jTextField2.setText("");
-        jTextField3.setText("");
+        jTextField3.setText("MM/YYYY");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     // DELETE
@@ -230,6 +233,7 @@ public class tarjetaFrame extends javax.swing.JFrame {
         String name = jTextField1.getText();
         int indexU = getIndex(name, listCard);
         listCard.remove(indexU);
+        JOptionPane.showMessageDialog(null, "TARJETA ELIMINADA CORRECTAMENTE");
         AddRowToJtable(listCard, indexUs);
          jTextField1.setText("");
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -258,13 +262,48 @@ public class tarjetaFrame extends javax.swing.JFrame {
     }
     
     public static int getIndex(String name, LinkedList<tarjeta> listCard){
-    for(int i=0; i<listCard.size(); i++){
+        for(int i=0; i<listCard.size(); i++){
             if(listCard.get(i).getNombre().equals(name)){
                 return i;
             }
         }
         return 0;
     }
+    
+    public static String passwordReturn(String numeroT){
+        if(numeroT.length()>0){
+            int pos = numeroT.length()-4;
+            String prt2 = numeroT.substring(pos);
+            return prt2;
+        } else {
+            return "";
+        }
+        
+    }
+    
+    public static void validate(int pos, LinkedList<tarjeta> listCard, String numeroT, String fechaVen){
+        String tNumber = passwordReturn(listCard.get(pos).getNumeroT());
+        String venFecha = listCard.get(pos).getFechaVen();
+        String numeroT2 = passwordReturn(numeroT);
+        
+        if(numeroT2.length()>0){
+            listCard.get(pos).setNumeroT(numeroT);
+        } else {
+            if(tNumber.equals(numeroT2)){
+                listCard.get(pos).setNumeroT(tNumber);
+            }
+        }
+        
+        if(fechaVen.length()>0){
+            listCard.get(pos).setFechaVen(fechaVen);
+        } else {
+            if(listCard.get(pos).getFechaVen().equals(fechaVen)){
+                listCard.get(pos).setFechaVen(venFecha);
+            }
+        }
+    }
+    
+    
     
     /**
      * @param args the command line arguments
@@ -297,7 +336,7 @@ public class tarjetaFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new tarjetaFrame().setVisible(true);
-                new Login().setVisible(false);
+                
             }
         });
     }

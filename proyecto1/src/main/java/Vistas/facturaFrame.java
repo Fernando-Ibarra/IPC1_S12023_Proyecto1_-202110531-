@@ -10,6 +10,7 @@ import javax.swing.table.DefaultTableModel;
 import static Vistas.Login.indexUser;
 import static controlador.factura.listFactura;
 import static controlador.user.listUser;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -207,6 +208,7 @@ public class facturaFrame extends javax.swing.JFrame {
         String dpi = listUser.get(indexUs).getDpi();
         factura fac = new factura(name, addres, nit, dpi);
         listFactura.add(fac);
+        JOptionPane.showMessageDialog(null, "DATOS DE FACTURACIÓN REGISTRADOS CORRECTAMENTE");
         AddRowToJtable(listFactura, indexUs);
         jTextField1.setText("");
         jTextField2.setText("");
@@ -217,9 +219,9 @@ public class facturaFrame extends javax.swing.JFrame {
         String name = jTextField1.getText();
         String addres = jTextField2.getText();
         String nit = jTextField3.getText();
-        int indexU = getIndex(nit, listFactura);        
-        listFactura.get(indexU).setDireccion(addres);
-        listFactura.get(indexU).setNombre(name);
+        int indexU = getIndex(nit, listFactura);
+        validate(indexU, listFactura, addres, name);
+        JOptionPane.showMessageDialog(null, "DATOS DE FACTURACIÓN ACTUALIZADA CORRECTAMENTE");
         AddRowToJtable(listFactura, indexUs);
         jTextField1.setText("");
         jTextField2.setText("");
@@ -230,6 +232,7 @@ public class facturaFrame extends javax.swing.JFrame {
         String nit = jTextField3.getText();
         int indexD = getIndex(nit, listFactura);
         listFactura.remove(indexD);
+        JOptionPane.showMessageDialog(null, "DATOS DE FACTURACIÓN ELIMINADOS CORRECTAMENTE");
         AddRowToJtable(listFactura, indexUs);
         jTextField1.setText("");
         jTextField2.setText("");
@@ -259,12 +262,33 @@ public class facturaFrame extends javax.swing.JFrame {
     }
     
     public static int getIndex(String nit, LinkedList<factura> listFactura){
-    for(int i=0; i<listFactura.size(); i++){
+        for(int i=0; i<listFactura.size(); i++){
             if(listFactura.get(i).getNit().equals(nit)){
                 return i;
             }
         }
         return 0;
+    }
+    
+    public static void validate(int pos, LinkedList<factura> listFactura, String direccion, String name){
+        String address = listFactura.get(pos).getDireccion();
+        String name2 = listFactura.get(pos).getNombre();
+        
+        if(direccion.length()>0){
+            listFactura.get(pos).setDireccion(direccion);
+        } else {
+            if(listFactura.get(pos).getDireccion().equals(direccion)){
+                listFactura.get(pos).setDireccion(address);
+            }
+        }
+    
+        if(name.length()>0){
+            listFactura.get(pos).setNombre(name);
+        } else {
+            if(listFactura.get(pos).getNombre().equals(name)){
+                listFactura.get(pos).setNombre(name2);
+            }
+        }
     }
     
     /**
@@ -297,7 +321,6 @@ public class facturaFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new facturaFrame().setVisible(true);
             }
         });
     }
