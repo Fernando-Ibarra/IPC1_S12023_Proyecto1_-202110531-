@@ -13,8 +13,8 @@ import java.util.LinkedList;
 public class region {
     private String codigo;
     private String nombre;
-    private double priceE;
-    private double priceS;
+    private double  priceE;
+    private double  priceS;
 
     public region(String codigo, String nombre, double priceE, double priceS) {
         this.codigo = codigo;
@@ -54,7 +54,16 @@ public class region {
     public void setPriceS(double priceS) {
         this.priceS = priceS;
     }
-    
+
+    public static LinkedList<region> getListReg() {
+        return listReg;
+    }
+
+    public static void setListReg(LinkedList<region> listReg) {
+        region.listReg = listReg;
+    }
+
+
     public static LinkedList<region> listReg = new LinkedList<>();
     
 }
