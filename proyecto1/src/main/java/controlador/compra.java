@@ -16,16 +16,20 @@ public class compra extends cotizacion {
     private double total;
     private String typePay;
     private String facturacion;
+    private String dpi;
+    private String typeSend;
+    private String destinatario;
 
-    public compra(String cod, double total, String typePay, String facturacion, departamento departamentoO, municipio municipioO, String direccionO, departamento departamentoD, municipio municipioD, String direccionD, int cantidadPaquetes, String sizepackage) {
+    public compra(String cod, double total, String typePay, String facturacion, String dpi, String typeSend, String destinatario, departamento departamentoO, municipio municipioO, String direccionO, departamento departamentoD, municipio municipioD, String direccionD, int cantidadPaquetes, String sizepackage) {
         super(departamentoO, municipioO, direccionO, departamentoD, municipioD, direccionD, cantidadPaquetes, sizepackage);
         this.cod = cod;
         this.total = total;
         this.typePay = typePay;
         this.facturacion = facturacion;
+        this.dpi = dpi;
+        this.typeSend = typeSend;
+        this.destinatario = destinatario;
     }
-
-    
 
     public String getCod() {
         return cod;
@@ -59,6 +63,37 @@ public class compra extends cotizacion {
         this.facturacion = facturacion;
     }
 
+    public String getDpi() {
+        return dpi;
+    }
+
+    public void setDpi(String dpi) {
+        this.dpi = dpi;
+    }
+
+    public String getTypeSend() {
+        return typeSend;
+    }
+
+    public void setTypeSend(String typeSend) {
+        this.typeSend = typeSend;
+    }
+
+    public String getDestinatario() {
+        return destinatario;
+    }
+
+    public void setDestinatario(String destinatario) {
+        this.destinatario = destinatario;
+    }
+
+    public static LinkedList<compra> getListSolds() {
+        return listSolds;
+    }
+
+    public static void setListSolds(LinkedList<compra> listSolds) {
+        compra.listSolds = listSolds;
+    }
 
     public static LinkedList<compra> listSolds = new LinkedList<>();
     
