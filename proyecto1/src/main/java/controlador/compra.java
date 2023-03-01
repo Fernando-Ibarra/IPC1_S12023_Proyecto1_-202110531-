@@ -4,21 +4,35 @@
  */
 package controlador;
 
+import java.util.LinkedList;
+
 /**
  *
  * @author fi944
  */
 public class compra extends cotizacion {
     
+    private String cod; 
     private double total;
     private String typePay;
-    private factura facturacion;
+    private String facturacion;
 
-    public compra(double total, String typePay, factura facturacion, departamento departamentoO, municipio municipioO, String direccionO, departamento departamentoD, municipio municipioD, String direccionD, int cantidadPaquetes, double precioPaquetes) {
-        super(departamentoO, municipioO, direccionO, departamentoD, municipioD, direccionD, cantidadPaquetes, precioPaquetes);
+    public compra(String cod, double total, String typePay, String facturacion, departamento departamentoO, municipio municipioO, String direccionO, departamento departamentoD, municipio municipioD, String direccionD, int cantidadPaquetes, String sizepackage) {
+        super(departamentoO, municipioO, direccionO, departamentoD, municipioD, direccionD, cantidadPaquetes, sizepackage);
+        this.cod = cod;
         this.total = total;
         this.typePay = typePay;
         this.facturacion = facturacion;
+    }
+
+    
+
+    public String getCod() {
+        return cod;
+    }
+
+    public void setCod(String cod) {
+        this.cod = cod;
     }
 
     public double getTotal() {
@@ -37,14 +51,15 @@ public class compra extends cotizacion {
         this.typePay = typePay;
     }
 
-    public factura getFacturacion() {
+    public String getFacturacion() {
         return facturacion;
     }
 
-    public void setFacturacion(factura facturacion) {
+    public void setFacturacion(String facturacion) {
         this.facturacion = facturacion;
     }
-    
-    
+
+
+    public static LinkedList<compra> listSolds = new LinkedList<>();
     
 }

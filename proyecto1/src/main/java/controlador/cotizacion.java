@@ -16,9 +16,9 @@ public class cotizacion {
     private municipio municipioD;
     private String  direccionD;
     private int cantidadPaquetes;
-    private double precioPaquetes;
+    private String sizepackage;
 
-    public cotizacion(departamento departamentoO, municipio municipioO, String direccionO, departamento departamentoD, municipio municipioD, String direccionD, int cantidadPaquetes, double precioPaquetes) {
+    public cotizacion(departamento departamentoO, municipio municipioO, String direccionO, departamento departamentoD, municipio municipioD, String direccionD, int cantidadPaquetes, String sizepackage) {
         this.departamentoO = departamentoO;
         this.municipioO = municipioO;
         this.direccionO = direccionO;
@@ -26,7 +26,7 @@ public class cotizacion {
         this.municipioD = municipioD;
         this.direccionD = direccionD;
         this.cantidadPaquetes = cantidadPaquetes;
-        this.precioPaquetes = precioPaquetes;
+        this.sizepackage = sizepackage;
     }
 
     public departamento getDepartamentoO() {
@@ -85,14 +85,13 @@ public class cotizacion {
         this.cantidadPaquetes = cantidadPaquetes;
     }
 
-    public double getPrecioPaquetes() {
-        return precioPaquetes;
+    public String getSizepackage() {
+        return sizepackage;
     }
 
-    public void setPrecioPaquetes(double precioPaquetes) {
-        this.precioPaquetes = precioPaquetes;
+    public void setSizepackage(String sizepackage) {
+        this.sizepackage = sizepackage;
     }
-    
-    
-    
+
+
 }
