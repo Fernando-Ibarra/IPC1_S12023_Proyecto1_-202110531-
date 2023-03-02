@@ -5,6 +5,16 @@
 package Vistas;
 
 import static controlador.compra.listSolds;
+import static controlador.region.listReg;
+import controlador.regionSends;
+import static controlador.regionSends.listRegionSolds;
+import static controlador.user.listUser;
+import controlador.userSends;
+import static controlador.userSends.listUserSolds;
+import static controlador.utils.regionSendsOrder;
+import static controlador.utils.userSendsOrder;
+import java.util.LinkedList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,6 +30,10 @@ public class reportFrame extends javax.swing.JFrame {
         
         jTextField1.setText(Integer.toString(totalPackages()));
         jTextField2.setText(Double.toString(totalEarns()));
+        regionSendsOrder(listRegionSolds, listSolds,  listReg);
+        userSendsOrder(listUserSolds, listSolds, listUser);
+        AddRowToJtable1(listRegionSolds);
+        AddRowToJtable2(listUserSolds);
     }
 
     /**
@@ -187,6 +201,38 @@ public class reportFrame extends javax.swing.JFrame {
         }
         return total;
     }
+    
+    public static void AddRowToJtable1(LinkedList<regionSends> listRegionSolds){
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        // DELETE
+        if (model.getRowCount() > 0) {
+            for (int i = model.getRowCount() - 1; i > -1; i--) {
+                model.removeRow(i);
+            }
+        }
+        
+        // PUT
+        for(int i=0; i<listRegionSolds.size(); i++){
+            model.addRow(new Object[]{listRegionSolds.get(i).getReg(), listRegionSolds.get(i).getCantidad()});
+        } 
+    }
+    
+    public static void AddRowToJtable2(LinkedList<userSends> listUserSolds){
+        DefaultTableModel model = (DefaultTableModel)jTable2.getModel();
+        // DELETE
+        if (model.getRowCount() > 0) {
+            for (int i = model.getRowCount() - 1; i > -1; i--) {
+                model.removeRow(i);
+            }
+        }
+        
+        // PUT
+        for(int i=0; i<listUserSolds.size(); i++){
+            model.addRow(new Object[]{listUserSolds.get(i).getName() + " " + listUserSolds.get(i).getApellido(), listUserSolds.get(i).getCantidad()});
+        }
+    }
+    
+    
     /**
      * @param args the command line arguments
      */

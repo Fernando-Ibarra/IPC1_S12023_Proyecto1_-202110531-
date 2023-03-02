@@ -4,7 +4,7 @@
  */
 package com.mycompany.proyecto1;
 
-import Vistas.Login;
+import Vistas.Login; 
 import controlador.region;
 import controlador.user;
 import static controlador.user.listUser;

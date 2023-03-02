@@ -24,6 +24,7 @@ public class lastestShipping extends javax.swing.JFrame {
     public lastestShipping() {
         initComponents();
         AddRowToJtable(listSolds);
+        
     }
 
     /**
@@ -146,6 +147,7 @@ public class lastestShipping extends javax.swing.JFrame {
                 model.addRow(new Object[]{listSolds.get(i).getCod(), listSolds.get(i).getTypeSend(), listSolds.get(i).getDestinatario(), listSolds.get(i).getTotal(), listSolds.get(i).getTypePay()});
             }
         } 
+        
     }
 
     /**
