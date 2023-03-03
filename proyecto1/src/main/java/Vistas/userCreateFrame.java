@@ -6,13 +6,19 @@ package Vistas;
 
 import controlador.user;
 import static controlador.user.listUser;
+import java.awt.Image;
+import java.io.File;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
  * @author fi944
  */
 public class userCreateFrame extends javax.swing.JFrame { 
+    String path;
 
     /**
      * Creates new form userCreateFrame
@@ -55,6 +61,8 @@ public class userCreateFrame extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -146,6 +154,14 @@ public class userCreateFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jButton3.setText("SUBIR IMAGEN");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -156,9 +172,14 @@ public class userCreateFrame extends javax.swing.JFrame {
                         .addGap(111, 111, 111)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
+                        .addGap(58, 58, 58)
+                        .addComponent(jButton1)
+                        .addGap(66, 66, 66)
+                        .addComponent(jButton2))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(24, 24, 24)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -170,25 +191,24 @@ public class userCreateFrame extends javax.swing.JFrame {
                                     .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField7)
-                                    .addComponent(jTextField8)
-                                    .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBox1, 0, 1, Short.MAX_VALUE)
-                                    .addComponent(jComboBox2, 0, 218, Short.MAX_VALUE)
-                                    .addComponent(jTextField4)
-                                    .addComponent(jTextField3)
-                                    .addComponent(jTextField2)
-                                    .addComponent(jTextField1)
-                                    .addComponent(jTextField5)
-                                    .addComponent(jTextField6)))
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(35, 35, 35)
-                                .addComponent(jButton1)
-                                .addGap(63, 63, 63)
-                                .addComponent(jButton2)))))
+                                .addGap(49, 49, 49)
+                                .addComponent(jButton3)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField7)
+                            .addComponent(jTextField8)
+                            .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox1, 0, 1, Short.MAX_VALUE)
+                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextField4)
+                            .addComponent(jTextField3)
+                            .addComponent(jTextField2)
+                            .addComponent(jTextField1)
+                            .addComponent(jTextField5)
+                            .addComponent(jTextField6)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -243,10 +263,17 @@ public class userCreateFrame extends javax.swing.JFrame {
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(jButton3)
+                        .addGap(0, 53, Short.MAX_VALUE)))
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addGap(36, 36, 36))
         );
 
         pack();
@@ -275,7 +302,7 @@ public class userCreateFrame extends javax.swing.JFrame {
         String gen = jComboBox3.getSelectedItem().toString();
         
         if(passwordValidate){
-            user userCreate = new user(name, last_name, dpi, gen, birthdate, nacionality, alias, phone_number, email, password, rol);
+            user userCreate = new user(name, last_name, dpi, gen, birthdate, nacionality, alias, phone_number, path, email, password, rol);
             listUser.add(userCreate);
             System.out.println("USUARIO REGISTRADO");
             System.out.println(listUser);
@@ -299,6 +326,20 @@ public class userCreateFrame extends javax.swing.JFrame {
         log.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        JFileChooser browseImageFile = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("IMAGES", "png", "jpg", "jpeg");
+        browseImageFile.addChoosableFileFilter(filter);
+        int showOpenDialogue = browseImageFile.showOpenDialog(null);
+        if (showOpenDialogue == JFileChooser.APPROVE_OPTION){
+            File selectedImageFile = browseImageFile.getSelectedFile();
+            path = selectedImageFile.getAbsolutePath();
+            ImageIcon icon = new ImageIcon(path);
+            Image img = icon.getImage().getScaledInstance(jLabel13.getWidth(), jLabel13.getHeight(), Image.SCALE_SMOOTH);
+            jLabel13.setIcon(new ImageIcon(img));
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     
     public boolean validatePassword(String password){
@@ -369,6 +410,7 @@ public class userCreateFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
@@ -376,6 +418,7 @@ public class userCreateFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

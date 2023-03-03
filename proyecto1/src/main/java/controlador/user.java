@@ -20,8 +20,9 @@ public class user extends autenticador {
     private String nacionalidad;
     private String alias;
     private String telefono;
+    private String path;
 
-    public user(String nombre, String apellido, String dpi, String genero, String fechaN, String nacionalidad, String alias, String telefono, String correo, String password, String rol) {
+    public user(String nombre, String apellido, String dpi, String genero, String fechaN, String nacionalidad, String alias, String telefono, String path, String correo, String password, String rol) {
         super(correo, password, rol);
         this.nombre = nombre;
         this.apellido = apellido;
@@ -31,6 +32,7 @@ public class user extends autenticador {
         this.nacionalidad = nacionalidad;
         this.alias = alias;
         this.telefono = telefono;
+        this.path = path;
     }
 
     public String getNombre() {
@@ -96,6 +98,24 @@ public class user extends autenticador {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public static LinkedList<user> getListUser() {
+        return listUser;
+    }
+
+    public static void setListUser(LinkedList<user> listUser) {
+        user.listUser = listUser;
+    }
+
+
     
     public static LinkedList<user> listUser = new LinkedList<>();
 }

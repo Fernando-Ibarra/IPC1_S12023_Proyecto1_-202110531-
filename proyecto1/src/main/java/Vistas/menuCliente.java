@@ -75,6 +75,11 @@ public class menuCliente extends javax.swing.JFrame {
 
         jButton5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton5.setText("PERFIL");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton6.setText("SALIR");
@@ -161,6 +166,12 @@ public class menuCliente extends javax.swing.JFrame {
         lS.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        userUpdateProfile uPF = new userUpdateProfile();
+        uPF.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments

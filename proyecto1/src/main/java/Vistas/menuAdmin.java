@@ -93,6 +93,11 @@ public class menuAdmin extends javax.swing.JFrame {
 
         jButton7.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton7.setText("CREAR USUARIO");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -178,6 +183,12 @@ public class menuAdmin extends javax.swing.JFrame {
         rF.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        userCreateFrameAdmin uCFA = new userCreateFrameAdmin();
+        uCFA.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
