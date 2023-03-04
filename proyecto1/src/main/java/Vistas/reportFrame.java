@@ -4,15 +4,15 @@
  */
 package Vistas;
 
-import static controlador.compra.listSolds;
-import static controlador.region.listReg;
-import controlador.regionSends;
-import static controlador.regionSends.listRegionSolds;
-import static controlador.user.listUser;
-import controlador.userSends;
-import static controlador.userSends.listUserSolds;
-import static controlador.utils.regionSendsOrder;
-import static controlador.utils.userSendsOrder;
+import static controlador.Compra.listSolds;
+import static controlador.Region.listReg;
+import controlador.RegionSends;
+import static controlador.RegionSends.listRegionSolds;
+import static controlador.User.listUser;
+import controlador.UserSends;
+import static controlador.UserSends.listUserSolds;
+import static controlador.Utils.regionSendsOrder;
+import static controlador.Utils.userSendsOrder;
 import java.util.LinkedList;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,12 +20,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author fi944
  */
-public class reportFrame extends javax.swing.JFrame {
+public class ReportFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form reportFrame
      */
-    public reportFrame() {
+    public ReportFrame() {
         initComponents();
         
         jTextField1.setText(Integer.toString(totalPackages()));
@@ -181,7 +181,7 @@ public class reportFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        menuAdmin mA = new menuAdmin();
+        MenuAdmin mA = new MenuAdmin();
         mA.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -202,7 +202,7 @@ public class reportFrame extends javax.swing.JFrame {
         return total;
     }
     
-    public static void AddRowToJtable1(LinkedList<regionSends> listRegionSolds){
+    public static void AddRowToJtable1(LinkedList<RegionSends> listRegionSolds){
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         // DELETE
         if (model.getRowCount() > 0) {
@@ -219,7 +219,7 @@ public class reportFrame extends javax.swing.JFrame {
         } 
     }
     
-    public static void AddRowToJtable2(LinkedList<userSends> listUserSolds){
+    public static void AddRowToJtable2(LinkedList<UserSends> listUserSolds){
         DefaultTableModel model = (DefaultTableModel)jTable2.getModel();
         // DELETE
         if (model.getRowCount() > 0) {
@@ -230,7 +230,7 @@ public class reportFrame extends javax.swing.JFrame {
         
         // PUT
         for(int i=0; i<listUserSolds.size(); i++){
-            if(listUserSolds.get(i).getCantidad()> 0){
+            if(listUserSolds.get(i).getCantidad() > 0){
                 model.addRow(new Object[]{listUserSolds.get(i).getName() + " " + listUserSolds.get(i).getApellido(), listUserSolds.get(i).getCantidad()});
             }
         }
@@ -254,20 +254,21 @@ public class reportFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(reportFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ReportFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(reportFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ReportFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(reportFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ReportFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(reportFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ReportFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new reportFrame().setVisible(true);
+                new ReportFrame().setVisible(true);
             }
         });
     }

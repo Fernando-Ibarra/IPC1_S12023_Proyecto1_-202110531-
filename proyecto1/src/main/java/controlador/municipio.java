@@ -10,13 +10,13 @@ import java.util.LinkedList;
  *
  * @author fi944
  */
-public class municipio {
+public class Municipio {
     
     private String cod;
     private String name;
-    private departamento depar;
+    private Departamento depar;
 
-    public municipio(String cod, String name, departamento depar) {
+    public Municipio(String cod, String name, Departamento depar) {
         this.cod = cod;
         this.name = name;
         this.depar = depar;
@@ -38,13 +38,13 @@ public class municipio {
         this.name = name;
     }
 
-    public departamento getDepar() {
+    public Departamento getDepar() {
         return depar;
     }
 
-    public void setDepar(departamento depar) {
+    public void setDepar(Departamento depar) {
         this.depar = depar;
     }
     
-    public static LinkedList<municipio> listMucipio = new LinkedList<>();
+    public static LinkedList<Municipio> listMucipio = new LinkedList<>();
 }

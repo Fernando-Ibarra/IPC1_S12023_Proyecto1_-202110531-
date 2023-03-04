@@ -5,9 +5,9 @@
 package Vistas;
 
 import static Vistas.Login.indexUser;
-import controlador.tarjeta;
-import static controlador.tarjeta.listCard;
-import static controlador.user.listUser;
+import controlador.Tarjeta;
+import static controlador.Tarjeta.listCard;
+import static controlador.User.listUser;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -16,14 +16,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author fi944
  */
-public class tarjetaFrame extends javax.swing.JFrame {
-    menuCliente mC = new menuCliente();
+public class TarjetaFrame extends javax.swing.JFrame {
+    MenuCliente mC = new MenuCliente();
     public int indexUs = indexUser;
     
     /**
      * Creates new form tarjetaFrame
      */
-    public tarjetaFrame() {
+    public TarjetaFrame() {
         initComponents();
         System.out.println(listUser.get(indexUser).getDpi());
         AddRowToJtable(listCard, indexUs);
@@ -205,7 +205,7 @@ public class tarjetaFrame extends javax.swing.JFrame {
         String date = jTextField3.getText();
         String dpi = listUser.get(indexUs).getDpi();
         
-        tarjeta tjt = new tarjeta(name, numberT, date, dpi);
+        Tarjeta tjt = new Tarjeta(name, numberT, date, dpi);
         listCard.add(tjt);
         JOptionPane.showMessageDialog(null, "TARJETA REGISTRADA CORRECTAMENTE");
         AddRowToJtable(listCard, indexUs);
@@ -244,7 +244,7 @@ public class tarjetaFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     
-    public static void AddRowToJtable(LinkedList<tarjeta> listCard, int index){
+    public static void AddRowToJtable(LinkedList<Tarjeta> listCard, int index){
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         // DELETE
         if (model.getRowCount() > 0) {
@@ -261,7 +261,7 @@ public class tarjetaFrame extends javax.swing.JFrame {
         } 
     }
     
-    public static int getIndex(String name, LinkedList<tarjeta> listCard){
+    public static int getIndex(String name, LinkedList<Tarjeta> listCard){
         for(int i=0; i<listCard.size(); i++){
             if(listCard.get(i).getNombre().equals(name)){
                 return i;
@@ -281,7 +281,7 @@ public class tarjetaFrame extends javax.swing.JFrame {
         
     }
     
-    public static void validate(int pos, LinkedList<tarjeta> listCard, String numeroT, String fechaVen){
+    public static void validate(int pos, LinkedList<Tarjeta> listCard, String numeroT, String fechaVen){
         String tNumber = passwordReturn(listCard.get(pos).getNumeroT());
         String venFecha = listCard.get(pos).getFechaVen();
         String numeroT2 = passwordReturn(numeroT);
@@ -322,20 +322,21 @@ public class tarjetaFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(tarjetaFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TarjetaFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(tarjetaFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TarjetaFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(tarjetaFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TarjetaFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(tarjetaFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TarjetaFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new tarjetaFrame().setVisible(true);
+                new TarjetaFrame().setVisible(true);
                 
             }
         });

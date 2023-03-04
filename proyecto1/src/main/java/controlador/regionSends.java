@@ -10,12 +10,12 @@ import java.util.LinkedList;
  *
  * @author fi944
  */
-public class regionSends {
+public class RegionSends {
     
     private String reg;
     private int cantidad;
 
-    public regionSends(String reg, int cantidad) {
+    public RegionSends(String reg, int cantidad) {
         this.reg = reg;
         this.cantidad = cantidad;
     }
@@ -36,14 +36,14 @@ public class regionSends {
         this.cantidad = cantidad;
     }
 
-    public static LinkedList<regionSends> getListRegionSolds() {
+    public static LinkedList<RegionSends> getListRegionSolds() {
         return listRegionSolds;
     }
 
-    public static void setListRegionSolds(LinkedList<regionSends> listRegionSolds) {
-        regionSends.listRegionSolds = listRegionSolds;
+    public static void setListRegionSolds(LinkedList<RegionSends> listRegionSolds) {
+        RegionSends.listRegionSolds = listRegionSolds;
     }
 
-    public static LinkedList<regionSends> listRegionSolds = new LinkedList<>();
+    public static LinkedList<RegionSends> listRegionSolds = new LinkedList<>();
     
 }

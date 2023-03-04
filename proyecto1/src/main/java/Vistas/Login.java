@@ -4,8 +4,8 @@
  */
 package Vistas;
 
-import controlador.user;
-import static controlador.user.listUser;
+import controlador.User;
+import static controlador.User.listUser;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
 
@@ -15,9 +15,9 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JFrame {
     
-    menuAdmin menuA = new menuAdmin();
-    menuCliente mC = new menuCliente();
-    userCreateFrame userFrame = new userCreateFrame();
+    MenuAdmin menuA = new MenuAdmin();
+    MenuCliente mC = new MenuCliente();
+    UserCreateFrame userFrame = new UserCreateFrame();
     public static int indexUser;
 
     /**
@@ -151,12 +151,14 @@ public class Login extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void access(String mail, String password, LinkedList<user> listUser){        
+    private void access(String mail, String password, LinkedList<User> listUser){
+        boolean verificacion = false;
         for(int i=0; i<listUser.size();i++){
             if(listUser.get(i).getCorreo().equals(mail) && listUser.get(i).getPassword().equals(password)){
                 if(listUser.get(i).getRol().equals("admin")){
                     menuA.setVisible(true);
                     this.dispose();
+                    verificacion=true;
                     break;
                 } else if(listUser.get(i).getRol().equals("Individual") || listUser.get(i).getRol().equals("Empresarial")|| listUser.get(i).getRol().equals("Kiosco")) {
                     mC.setVisible(true);
@@ -164,11 +166,15 @@ public class Login extends javax.swing.JFrame {
                     System.out.println(listUser.get(indexUser).getDpi());
                     System.out.println(indexUser);
                     this.dispose();
+                    verificacion=true;
                     break;
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "CORREO O CONTRASEÑA INCORRECTA");
+                verificacion=false;
             }
+        }
+        if(verificacion != true){
+            JOptionPane.showMessageDialog(null, "CORREO O CONTRASEÑA INCORRECTA");
         }
     };
     

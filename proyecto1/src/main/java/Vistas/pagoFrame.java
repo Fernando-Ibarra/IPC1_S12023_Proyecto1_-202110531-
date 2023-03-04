@@ -5,19 +5,19 @@
 package Vistas;
 
 import static Vistas.Login.indexUser;
-import controlador.compra;
-import static controlador.compra.listSolds;
-import static controlador.departamento.listDepartamento;
-import static controlador.factura.listFactura;
-import static controlador.municipio.listMucipio;
-import controlador.regionSends;
-import static controlador.regionSends.listRegionSolds;
-import static controlador.tarjeta.listCard;
-import static controlador.user.listUser;
-import controlador.userSends;
-import static controlador.userSends.listUserSolds;
-import static controlador.utils.guidePack;
-import static controlador.utils.headCheck;
+import controlador.Compra;
+import static controlador.Compra.listSolds;
+import static controlador.Departamento.listDepartamento;
+import static controlador.Factura.listFactura;
+import static controlador.Municipio.listMucipio;
+import controlador.RegionSends;
+import static controlador.RegionSends.listRegionSolds;
+import static controlador.Tarjeta.listCard;
+import static controlador.User.listUser;
+import controlador.UserSends;
+import static controlador.UserSends.listUserSolds;
+import static controlador.Utils.guidePack;
+import static controlador.Utils.headCheck;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.LinkedList;
@@ -30,7 +30,7 @@ import javax.swing.JOptionPane;
  *
  * @author fi944
  */
-public class pagoFrame extends javax.swing.JFrame {
+public class PagoFrame extends javax.swing.JFrame {
 
     public int indexUs = indexUser;
     public static LinkedList<String> listFact = new LinkedList<>();
@@ -39,7 +39,7 @@ public class pagoFrame extends javax.swing.JFrame {
     /**
      * Creates new form pagoFrame
      */
-    public pagoFrame() {
+    public PagoFrame() {
         initComponents();
 
         for (int i = 0; i < listDepartamento.size(); i++) {
@@ -674,13 +674,13 @@ public class pagoFrame extends javax.swing.JFrame {
 
         String destinatario = jTextField5.getText();
 
-        compra cp = new compra(idSold, finalT, typePaid, nit, listUser.get(indexUser).getDpi(), typeSend, destinatario, listDepartamento.get(deparO), listMucipio.get(muniO), direO, listDepartamento.get(deparD), listMucipio.get(muniD), direD, cantidad, type);
+        Compra cp = new Compra(idSold, finalT, typePaid, nit, listUser.get(indexUser).getDpi(), typeSend, destinatario, listDepartamento.get(deparO), listMucipio.get(muniO), direO, listDepartamento.get(deparD), listMucipio.get(muniD), direD, cantidad, type);
         listSolds.add(cp);
         JOptionPane.showMessageDialog(null, "ENVIO REGISTRADO CORRECTAMENTE");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        String facturaHtml = headCheck(idSold, listSolds);
+        String facturaHtml = headCheck(idSold, listSolds, listUser, listFactura);
         try {
             try (FileWriter myWriter = new FileWriter("C:\\Users\\fi944\\Downloads\\factura_"+idSold+".html")) {
                 myWriter.write(facturaHtml);
@@ -692,13 +692,13 @@ public class pagoFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        menuCliente mC = new menuCliente();
+        MenuCliente mC = new MenuCliente();
         mC.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        String guideHtml = guidePack(idSold, listSolds);
+        String guideHtml = guidePack(idSold, listSolds, listUser);
         try {
             try (FileWriter myWriter = new FileWriter("C:\\Users\\fi944\\Downloads\\guia_"+idSold+".html")) {
                 myWriter.write(guideHtml);
@@ -751,20 +751,21 @@ public class pagoFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(pagoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PagoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(pagoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PagoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(pagoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PagoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(pagoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PagoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new pagoFrame().setVisible(true);
+                new PagoFrame().setVisible(true);
             }
         });
     }

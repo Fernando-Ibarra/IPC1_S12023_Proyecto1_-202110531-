@@ -10,13 +10,13 @@ import java.util.LinkedList;
  *
  * @author fi944
  */
-public class kiosco {
+public class Kiosco {
     
     private String codigo;
     private String Nombre;
-    private region reg;
+    private Region reg;
 
-    public kiosco(String codigo, String Nombre, region reg) {
+    public Kiosco(String codigo, String Nombre, Region reg) {
         this.codigo = codigo;
         this.Nombre = Nombre;
         this.reg = reg;
@@ -38,13 +38,13 @@ public class kiosco {
         this.Nombre = Nombre;
     }
 
-    public region getReg() {
+    public Region getReg() {
         return reg;
     }
 
-    public void setReg(region reg) {
+    public void setReg(Region reg) {
         this.reg = reg;
     }
     
-    public static LinkedList<kiosco> listKiosco = new LinkedList<>();
+    public static LinkedList<Kiosco> listKiosco = new LinkedList<>();
 }

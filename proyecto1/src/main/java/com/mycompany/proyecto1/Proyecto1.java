@@ -5,9 +5,9 @@
 package com.mycompany.proyecto1;
 
 import Vistas.Login; 
-import controlador.region;
-import controlador.user;
-import static controlador.user.listUser;
+import controlador.Region;
+import controlador.User;
+import static controlador.User.listUser;
 
 /**
  *
@@ -15,19 +15,19 @@ import static controlador.user.listUser;
  */
 public class Proyecto1 {
     public static void main(String[] args) {
-        user myUser = new user("Enrique Fernando", "Gaitán Ibarra", "3011233730101", "Hombre", "27/08/2002", "Guatemala", "feribarra", "49900123", "", "ipc1_202110531@ipc1delivery.com", "202110531", "admin");
-        region reg1 = new region("M", "Metropolitana", 35.00, 25.00);
-        region reg2 = new region("NT", "Norte", 68.50, 45.55);
-        region reg3 = new region("NO", "Nororiente", 58.68, 35.48);
-        region reg4 = new region("SO", "Suroriente", 38.68, 32.48);
-        region reg5 = new region("SOC", "Suroccidente",  34.00, 29.00);
-        region reg6 = new region("NOC", "Noroccidente", 44.50,  40.00);
-        region.listReg.add(reg1);
-        region.listReg.add(reg2);
-        region.listReg.add(reg3);
-        region.listReg.add(reg4);
-        region.listReg.add(reg5);
-        region.listReg.add(reg6);
+        User myUser = new User("Enrique Fernando", "Gaitán Ibarra", "3011233730101", "Hombre", "27/08/2002", "Guatemala", "feribarra", "49900123", "", "ipc1_202110531@ipc1delivery.com", "202110531", "admin");
+        Region reg1 = new Region("M", "Metropolitana", 35.00, 25.00);
+        Region reg2 = new Region("NT", "Norte", 68.50, 45.55);
+        Region reg3 = new Region("NO", "Nororiente", 58.68, 35.48);
+        Region reg4 = new Region("SO", "Suroriente", 38.68, 32.48);
+        Region reg5 = new Region("SOC", "Suroccidente",  34.00, 29.00);
+        Region reg6 = new Region("NOC", "Noroccidente", 44.50,  40.00);
+        Region.listReg.add(reg1);
+        Region.listReg.add(reg2);
+        Region.listReg.add(reg3);
+        Region.listReg.add(reg4);
+        Region.listReg.add(reg5);
+        Region.listReg.add(reg6);
         listUser.add(myUser);
         Login log = new Login();
         log.setVisible(true);

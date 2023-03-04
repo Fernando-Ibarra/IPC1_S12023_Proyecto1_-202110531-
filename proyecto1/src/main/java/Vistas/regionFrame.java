@@ -4,8 +4,8 @@
  */
 package Vistas;
 
-import controlador.region;
-import static controlador.region.listReg;
+import controlador.Region;
+import static controlador.Region.listReg;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -14,14 +14,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author fi944
  */
-public class regionFrame extends javax.swing.JFrame {
+public class RegionFrame extends javax.swing.JFrame {
     
-    menuAdmin mA = new menuAdmin();
+    MenuAdmin mA = new MenuAdmin();
 
     /**
      * Creates new form regionFrame
      */
-    public regionFrame() {
+    public RegionFrame() {
         initComponents();
         AddRowToJtable(listReg);
     }
@@ -205,7 +205,7 @@ public class regionFrame extends javax.swing.JFrame {
         double priceSt = Double.parseDouble(jTextField3.getText());
         double priceS = Double.parseDouble(jTextField4.getText());
         
-        region reg = new region(cod, name, priceSt, priceS);
+        Region reg = new Region(cod, name, priceSt, priceS);
         listReg.add(reg);
         AddRowToJtable(listReg);
         JOptionPane.showMessageDialog(null, "REGIÓN REGISTRADA CORRECTAMENTE");
@@ -261,7 +261,7 @@ public class regionFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
 
-    public static void AddRowToJtable(LinkedList<region> listReg){
+    public static void AddRowToJtable(LinkedList<Region> listReg){
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         // DELETE
         if (model.getRowCount() > 0) {
@@ -276,7 +276,7 @@ public class regionFrame extends javax.swing.JFrame {
         } 
     }
     
-    public static int getIndex(String cod, LinkedList<region> listReg){
+    public static int getIndex(String cod, LinkedList<Region> listReg){
         for(int i=0; i<listReg.size(); i++){
             if(listReg.get(i).getCodigo().equals(cod)){
                 return i;
@@ -293,7 +293,7 @@ public class regionFrame extends javax.swing.JFrame {
         }
     }
     
-    public static void validate(int pos, LinkedList<region> listReg, String nombre, double priceE, double priceS){
+    public static void validate(int pos, LinkedList<Region> listReg, String nombre, double priceE, double priceS){
         String name = listReg.get(pos).getNombre();
         double estandar = listReg.get(pos).getPriceE();
         double special = listReg.get(pos).getPriceS();
@@ -338,20 +338,21 @@ public class regionFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(regionFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegionFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(regionFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegionFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(regionFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegionFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(regionFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegionFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new regionFrame().setVisible(true);
+                new RegionFrame().setVisible(true);
             }
         });
     }

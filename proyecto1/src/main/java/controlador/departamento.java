@@ -10,13 +10,13 @@ import java.util.LinkedList;
  *
  * @author fi944
  */
-public class departamento {
+public class Departamento {
     
     private String cod;
     private String name;
-    private region reg;
+    private Region reg;
 
-    public departamento(String cod, String name, region reg) {
+    public Departamento(String cod, String name, Region reg) {
         this.cod = cod;
         this.name = name;
         this.reg = reg;
@@ -38,13 +38,13 @@ public class departamento {
         this.name = name;
     }
 
-    public region getReg() {
+    public Region getReg() {
         return reg;
     }
 
-    public void setReg(region reg) {
+    public void setReg(Region reg) {
         this.reg = reg;
     }
     
-    public static LinkedList<departamento> listDepartamento = new LinkedList<>();
+    public static LinkedList<Departamento> listDepartamento = new LinkedList<>();
 }

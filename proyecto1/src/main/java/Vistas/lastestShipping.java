@@ -5,11 +5,12 @@
 package Vistas;
 
 import static Vistas.Login.indexUser;
-import controlador.compra;
-import static controlador.compra.listSolds;
-import static controlador.user.listUser;
-import static controlador.utils.guidePack;
-import static controlador.utils.headCheck;
+import controlador.Compra;
+import static controlador.Compra.listSolds;
+import static controlador.Factura.listFactura;
+import static controlador.User.listUser;
+import static controlador.Utils.guidePack;
+import static controlador.Utils.headCheck;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.LinkedList;
@@ -19,14 +20,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author fi944
  */
-public class lastestShipping extends javax.swing.JFrame {
+public class LastestShipping extends javax.swing.JFrame {
 
     public int index = indexUser;
 
     /**
      * Creates new form lastestShipping
      */
-    public lastestShipping() {
+    public LastestShipping() {
         initComponents();
         AddRowToJtable(listSolds);
 
@@ -142,14 +143,14 @@ public class lastestShipping extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        menuCliente mC = new menuCliente();
+        MenuCliente mC = new MenuCliente();
         mC.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String cod = jTextField1.getText();
-        String facturaHtml = headCheck(cod, listSolds);
+        String facturaHtml = headCheck(cod, listSolds, listUser, listFactura);
         try {
             try (FileWriter myWriter = new FileWriter("C:\\Users\\fi944\\Downloads\\factura_" + cod + ".html")) {
                 myWriter.write(facturaHtml);
@@ -162,7 +163,7 @@ public class lastestShipping extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         String cod = jTextField1.getText();
-        String guideHtml = guidePack(cod, listSolds);
+        String guideHtml = guidePack(cod, listSolds, listUser);
         try {
             try (FileWriter myWriter = new FileWriter("C:\\Users\\fi944\\Downloads\\guia_" + cod + ".html")) {
                 myWriter.write(guideHtml);
@@ -173,7 +174,7 @@ public class lastestShipping extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    public static void AddRowToJtable(LinkedList<compra> listSolds) {
+    public static void AddRowToJtable(LinkedList<Compra> listSolds) {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         // DELETE
         if (model.getRowCount() > 0) {
@@ -208,20 +209,21 @@ public class lastestShipping extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(lastestShipping.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LastestShipping.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(lastestShipping.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LastestShipping.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(lastestShipping.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LastestShipping.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(lastestShipping.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LastestShipping.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new lastestShipping().setVisible(true);
+                new LastestShipping().setVisible(true);
             }
         });
     }

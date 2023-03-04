@@ -4,7 +4,6 @@
  */
 package controlador;
 
-import static controlador.compra.listSolds;
 import java.time.LocalDate;
 import java.util.LinkedList;
 
@@ -12,12 +11,12 @@ import java.util.LinkedList;
  *
  * @author fi944
  */
-public class utils {
+public class Utils {
 
-    public static void regionSendsOrder(LinkedList<regionSends> listRegionSolds, LinkedList<compra> listSolds, LinkedList<region> listReg) {
+    public static void regionSendsOrder(LinkedList<RegionSends> listRegionSolds, LinkedList<Compra> listSolds, LinkedList<Region> listReg) {
 
         for (int i = 0; i < listReg.size(); i++) {
-            regionSends rS = new regionSends(listReg.get(i).getNombre(), 0);
+            RegionSends rS = new RegionSends(listReg.get(i).getNombre(), 0);
             listRegionSolds.add(rS);
         }
 
@@ -32,10 +31,10 @@ public class utils {
 
     }
 
-    public static void userSendsOrder(LinkedList<userSends> listUserSolds, LinkedList<compra> listSolds, LinkedList<user> listUser) {
+    public static void userSendsOrder(LinkedList<UserSends> listUserSolds, LinkedList<Compra> listSolds, LinkedList<User> listUser) {
 
         for (int i = 0; i < listUser.size(); i++) {
-            userSends uS = new userSends(listUser.get(i).getNombre(), listUser.get(i).getApellido(), listUser.get(i).getDpi(), 0);
+            UserSends uS = new UserSends(listUser.get(i).getNombre(), listUser.get(i).getApellido(), listUser.get(i).getDpi(), 0);
             listUserSolds.add(uS);
         }
 
@@ -50,14 +49,28 @@ public class utils {
 
     }
 
-    public static String headCheck(String cod, LinkedList<compra> listSolds) {
+    public static String headCheck(String cod, LinkedList<Compra> listSolds, LinkedList<User> listUser, LinkedList<Factura> listFactura) {
         int index = 0;
+        String manda = "";
+        String address = "";
         for (int i = 0; i < listSolds.size(); i++) {
             if (listSolds.get(i).getCod().equals(cod)) {
                 index = i;
             }
         }
 
+        for (int i = 0; i < listUser.size(); i++) {
+            if (listUser.get(i).getDpi().equals(listSolds.get(index).getDpi())) {
+                manda = listUser.get(i).getNombre() + " " + listUser.get(i).getApellido();
+            }
+        }
+        
+        for (int i = 0; i < listFactura.size(); i++) {
+            if (listFactura.get(i).getDpi().equals(listSolds.get(index).getDpi())) {
+                address = listFactura.get(i).getDireccion();
+            }
+        }
+        
         String encabezado = "<!DOCTYPE html>\n"
                 + "<html lang=\"es\">\n"
                 + "<head>\n"
@@ -165,6 +178,13 @@ public class utils {
                 + "                <td class=\"titleTable\">TIPO DE PAGO</td>\n"
                 + "                <td class=\"infoTable\">" + listSolds.get(index).getTypePay() + "</td>\n"
                 + "            </tr>\n"
+                + "            <tr>\n"
+                + "                <td class=\"titleTable\">NOMBRE</td>\n"
+                + "                <td class=\"infoTable\">" + manda + "</td>\n"
+                + "                <td></td>\n"
+                + "                <td class=\"titleTable\">DIRECCION</td>\n"
+                + "                <td class=\"infoTable\">" + address + "</td>\n"
+                + "            </tr>\n"
                 + "        </table>\n"
                 + "    </header>";
 
@@ -195,14 +215,20 @@ public class utils {
         return encabezado + body + table + footer;
     }
 
-    public static String guidePack(String cod, LinkedList<compra> listSolds) {
+    public static String guidePack(String cod, LinkedList<Compra> listSolds, LinkedList<User> listUser) {
         int index = 0;
+        String manda = "";
         for (int i = 0; i < listSolds.size(); i++) {
             if (listSolds.get(i).getCod().equals(cod)) {
                 index = i;
             }
         }
         LocalDate myObj = LocalDate.now();
+        for (int i = 0; i < listUser.size(); i++) {
+            if (listUser.get(i).getDpi().equals(listSolds.get(index).getDpi())) {
+                manda = listUser.get(i).getNombre() + " " + listUser.get(i).getApellido();
+            }
+        }
         String texto = "<!DOCTYPE html>\n"
                 + "<html lang='es'>\n"
                 + "<head>\n"
@@ -282,8 +308,16 @@ public class utils {
                 + "                <td class=\"infoTable\">" + listSolds.get(index).getDepartamentoO().getName() + ", " + listSolds.get(index).getMunicipioO().getName() + ", " + listSolds.get(index).getDireccionO() + "</td>\n"
                 + "            </tr>\n"
                 + "            <tr>\n"
+                + "                <td class=\"titleTable\">MANDA</td>\n"
+                + "                <td class=\"infoTable\">" + manda + "</td>\n"
+                + "            </tr>\n"
+                + "            <tr>\n"
                 + "                <td class=\"titleTable\">DESTINO</td>\n"
                 + "                <td class=\"infoTable\">" + listSolds.get(index).getDepartamentoD().getName() + ", " + listSolds.get(index).getMunicipioD().getName() + ", " + listSolds.get(index).getDireccionD() + "</td>\n"
+                + "            </tr>\n"
+                + "            <tr>\n"
+                + "                <td class=\"titleTable\">RECIBE</td>\n"
+                + "                <td class=\"infoTable\">" + listSolds.get(index).getDestinatario() + "</td>\n"
                 + "            </tr>\n"
                 + "        </table>\n"
                 + "        <section>\n"

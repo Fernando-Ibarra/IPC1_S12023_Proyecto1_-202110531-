@@ -9,13 +9,13 @@ package controlador;
  *
  * @author fi944
  */
-public class autenticador {
+public class Autenticador {
     
     private String correo;
     private String password;
     private String rol;
     
-    public autenticador(String correo, String password, String rol){
+    public Autenticador(String correo, String password, String rol){
         this.correo = correo;
         this.password = password;
         this.rol = rol;

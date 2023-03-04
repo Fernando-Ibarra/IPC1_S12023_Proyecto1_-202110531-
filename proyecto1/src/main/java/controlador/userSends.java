@@ -10,13 +10,13 @@ import java.util.LinkedList;
  *
  * @author fi944
  */
-public class userSends {
+public class UserSends {
     private String name;
     private String apellido;
     private String dpi;
     private int cantidad;
 
-    public userSends(String name, String apellido, String dpi, int cantidad) {
+    public UserSends(String name, String apellido, String dpi, int cantidad) {
         this.name = name;
         this.apellido = apellido;
         this.dpi = dpi;
@@ -55,17 +55,17 @@ public class userSends {
         this.cantidad = cantidad;
     }
 
-    public static LinkedList<userSends> getListUserSolds() {
+    public static LinkedList<UserSends> getListUserSolds() {
         return listUserSolds;
     }
 
-    public static void setListUserSolds(LinkedList<userSends> listUserSolds) {
-        userSends.listUserSolds = listUserSolds;
+    public static void setListUserSolds(LinkedList<UserSends> listUserSolds) {
+        UserSends.listUserSolds = listUserSolds;
     }
 
 
 
 
     
-    public static LinkedList<userSends> listUserSolds = new LinkedList<>();
+    public static LinkedList<UserSends> listUserSolds = new LinkedList<>();
 }

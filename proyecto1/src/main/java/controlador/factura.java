@@ -10,13 +10,13 @@ import java.util.LinkedList;
  *
  * @author fi944
  */
-public class factura {
+public class Factura {
     private String nombre;
     private String direccion;
     private String nit;
     private String dpi;
 
-    public factura(String nombre, String direccion, String nit, String dpi) {
+    public Factura(String nombre, String direccion, String nit, String dpi) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.nit = nit;
@@ -55,6 +55,6 @@ public class factura {
         this.dpi = dpi;
     }
     
-    public static LinkedList<factura> listFactura = new LinkedList<>();
+    public static LinkedList<Factura> listFactura = new LinkedList<>();
 
 }

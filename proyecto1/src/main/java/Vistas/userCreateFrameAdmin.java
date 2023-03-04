@@ -4,8 +4,8 @@
  */
 package Vistas;
 
-import controlador.user;
-import static controlador.user.listUser;
+import controlador.User;
+import static controlador.User.listUser;
 import java.awt.Image;
 import java.io.File;
 import javax.swing.ImageIcon;
@@ -17,13 +17,13 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author fi944
  */
-public class userCreateFrameAdmin extends javax.swing.JFrame {
+public class UserCreateFrameAdmin extends javax.swing.JFrame {
     String path;
 
     /**
      * Creates new form userCreateFrameAdmin
      */
-    public userCreateFrameAdmin() {
+    public UserCreateFrameAdmin() {
         initComponents();
     }
 
@@ -297,7 +297,7 @@ public class userCreateFrameAdmin extends javax.swing.JFrame {
         String gen = jComboBox3.getSelectedItem().toString();
         
         if(passwordValidate){
-            user userCreate = new user(name, last_name, dpi, gen, birthdate, nacionality, alias, phone_number, path, email, password, rol);
+            User userCreate = new User(name, last_name, dpi, gen, birthdate, nacionality, alias, phone_number, path, email, password, rol);
             listUser.add(userCreate);
             System.out.println("USUARIO REGISTRADO");
             System.out.println(listUser);
@@ -317,7 +317,7 @@ public class userCreateFrameAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        menuAdmin mA = new menuAdmin();
+        MenuAdmin mA = new MenuAdmin();
         mA.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -383,20 +383,21 @@ public class userCreateFrameAdmin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(userCreateFrameAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserCreateFrameAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(userCreateFrameAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserCreateFrameAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(userCreateFrameAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserCreateFrameAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(userCreateFrameAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserCreateFrameAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new userCreateFrameAdmin().setVisible(true);
+                new UserCreateFrameAdmin().setVisible(true);
             }
         });
     }

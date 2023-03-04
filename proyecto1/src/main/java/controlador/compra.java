@@ -10,7 +10,7 @@ import java.util.LinkedList;
  *
  * @author fi944
  */
-public class compra extends cotizacion {
+public class Compra extends Cotizacion {
     
     private String cod; 
     private double total;
@@ -20,7 +20,7 @@ public class compra extends cotizacion {
     private String typeSend;
     private String destinatario;
 
-    public compra(String cod, double total, String typePay, String facturacion, String dpi, String typeSend, String destinatario, departamento departamentoO, municipio municipioO, String direccionO, departamento departamentoD, municipio municipioD, String direccionD, int cantidadPaquetes, String sizepackage) {
+    public Compra(String cod, double total, String typePay, String facturacion, String dpi, String typeSend, String destinatario, Departamento departamentoO, Municipio municipioO, String direccionO, Departamento departamentoD, Municipio municipioD, String direccionD, int cantidadPaquetes, String sizepackage) {
         super(departamentoO, municipioO, direccionO, departamentoD, municipioD, direccionD, cantidadPaquetes, sizepackage);
         this.cod = cod;
         this.total = total;
@@ -87,14 +87,14 @@ public class compra extends cotizacion {
         this.destinatario = destinatario;
     }
 
-    public static LinkedList<compra> getListSolds() {
+    public static LinkedList<Compra> getListSolds() {
         return listSolds;
     }
 
-    public static void setListSolds(LinkedList<compra> listSolds) {
-        compra.listSolds = listSolds;
+    public static void setListSolds(LinkedList<Compra> listSolds) {
+        Compra.listSolds = listSolds;
     }
 
-    public static LinkedList<compra> listSolds = new LinkedList<>();
+    public static LinkedList<Compra> listSolds = new LinkedList<>();
     
 }

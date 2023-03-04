@@ -4,10 +4,10 @@
  */
 package Vistas;
 
-import controlador.departamento;
-import static controlador.departamento.listDepartamento;
-import controlador.region;
-import static controlador.region.listReg;
+import controlador.Departamento;
+import static controlador.Departamento.listDepartamento;
+import controlador.Region;
+import static controlador.Region.listReg;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -16,14 +16,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author fi944
  */
-public class departamentoFrame extends javax.swing.JFrame {
+public class DepartamentoFrame extends javax.swing.JFrame {
     
-    menuAdmin mA = new menuAdmin();
+    MenuAdmin mA = new MenuAdmin();
 
     /**
      * Creates new form departamentoFrame
      */
-    public departamentoFrame() {
+    public DepartamentoFrame() {
         initComponents();
         
         for(int i = 0; i < listReg.size(); i++) {
@@ -196,7 +196,7 @@ public class departamentoFrame extends javax.swing.JFrame {
         String name = jTextField2.getText();
         int region = jComboBox1.getSelectedIndex();
         
-        departamento depar = new departamento(cod, name, listReg.get(region));
+        Departamento depar = new Departamento(cod, name, listReg.get(region));
         listDepartamento.add(depar);
         AddRowToJtable(listDepartamento);
         JOptionPane.showMessageDialog(null, "DEPARTAMENTO REGISTRADADO CORRECTAMENTE");
@@ -228,7 +228,7 @@ public class departamentoFrame extends javax.swing.JFrame {
         jTextField1.setText("");
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    public static void AddRowToJtable(LinkedList<departamento> listDepartamento){
+    public static void AddRowToJtable(LinkedList<Departamento> listDepartamento){
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         // DELETE
         if (model.getRowCount() > 0) {
@@ -243,7 +243,7 @@ public class departamentoFrame extends javax.swing.JFrame {
         } 
     }
     
-    public static int getIndex(String cod, LinkedList<departamento> listDepartamento){
+    public static int getIndex(String cod, LinkedList<Departamento> listDepartamento){
     for(int i=0; i<listDepartamento.size(); i++){
             if(listDepartamento.get(i).getCod().equals(cod)){
                 return i;
@@ -253,9 +253,9 @@ public class departamentoFrame extends javax.swing.JFrame {
     }
     
     
-    public static void validate(int pos, LinkedList<departamento> listDepartamento, String name, int reg){
+    public static void validate(int pos, LinkedList<Departamento> listDepartamento, String name, int reg){
         String nombre = listDepartamento.get(pos).getName();
-        region region = listDepartamento.get(pos).getReg();
+        Region region = listDepartamento.get(pos).getReg();
         
         if(name.length()>0){
             listDepartamento.get(pos).setName(name);
@@ -291,20 +291,21 @@ public class departamentoFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(departamentoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DepartamentoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(departamentoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DepartamentoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(departamentoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DepartamentoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(departamentoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DepartamentoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new departamentoFrame().setVisible(true);
+                new DepartamentoFrame().setVisible(true);
             }
         });
     }

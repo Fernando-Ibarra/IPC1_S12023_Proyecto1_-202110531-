@@ -8,17 +8,17 @@ package controlador;
  *
  * @author fi944
  */
-public class cotizacion {
-    private departamento departamentoO;
-    private municipio municipioO;
+public class Cotizacion {
+    private Departamento departamentoO;
+    private Municipio municipioO;
     private String  direccionO;
-    private departamento departamentoD;
-    private municipio municipioD;
+    private Departamento departamentoD;
+    private Municipio municipioD;
     private String  direccionD;
     private int cantidadPaquetes;
     private String sizepackage;
 
-    public cotizacion(departamento departamentoO, municipio municipioO, String direccionO, departamento departamentoD, municipio municipioD, String direccionD, int cantidadPaquetes, String sizepackage) {
+    public Cotizacion(Departamento departamentoO, Municipio municipioO, String direccionO, Departamento departamentoD, Municipio municipioD, String direccionD, int cantidadPaquetes, String sizepackage) {
         this.departamentoO = departamentoO;
         this.municipioO = municipioO;
         this.direccionO = direccionO;
@@ -29,19 +29,19 @@ public class cotizacion {
         this.sizepackage = sizepackage;
     }
 
-    public departamento getDepartamentoO() {
+    public Departamento getDepartamentoO() {
         return departamentoO;
     }
 
-    public void setDepartamentoO(departamento departamentoO) {
+    public void setDepartamentoO(Departamento departamentoO) {
         this.departamentoO = departamentoO;
     }
 
-    public municipio getMunicipioO() {
+    public Municipio getMunicipioO() {
         return municipioO;
     }
 
-    public void setMunicipioO(municipio municipioO) {
+    public void setMunicipioO(Municipio municipioO) {
         this.municipioO = municipioO;
     }
 
@@ -53,19 +53,19 @@ public class cotizacion {
         this.direccionO = direccionO;
     }
 
-    public departamento getDepartamentoD() {
+    public Departamento getDepartamentoD() {
         return departamentoD;
     }
 
-    public void setDepartamentoD(departamento departamentoD) {
+    public void setDepartamentoD(Departamento departamentoD) {
         this.departamentoD = departamentoD;
     }
 
-    public municipio getMunicipioD() {
+    public Municipio getMunicipioD() {
         return municipioD;
     }
 
-    public void setMunicipioD(municipio municipioD) {
+    public void setMunicipioD(Municipio municipioD) {
         this.municipioD = municipioD;
     }
 

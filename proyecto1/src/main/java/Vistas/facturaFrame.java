@@ -4,26 +4,26 @@
  */
 package Vistas;
 
-import controlador.factura;
+import controlador.Factura;
 import java.util.LinkedList;
 import javax.swing.table.DefaultTableModel;
 import static Vistas.Login.indexUser;
-import static controlador.factura.listFactura;
-import static controlador.user.listUser;
+import static controlador.Factura.listFactura;
+import static controlador.User.listUser;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author fi944
  */
-public class facturaFrame extends javax.swing.JFrame {
-    menuCliente mC = new menuCliente();
+public class FacturaFrame extends javax.swing.JFrame {
+    MenuCliente mC = new MenuCliente();
     public int indexUs = indexUser;
     
     /**
      * Creates new form facturaFrame
      */
-    public facturaFrame() {
+    public FacturaFrame() {
         initComponents();
         System.out.println(listUser.get(indexUser).getDpi());
         AddRowToJtable(listFactura, indexUs);
@@ -206,7 +206,7 @@ public class facturaFrame extends javax.swing.JFrame {
         String addres = jTextField2.getText();
         String nit = jTextField3.getText();
         String dpi = listUser.get(indexUs).getDpi();
-        factura fac = new factura(name, addres, nit, dpi);
+        Factura fac = new Factura(name, addres, nit, dpi);
         listFactura.add(fac);
         JOptionPane.showMessageDialog(null, "DATOS DE FACTURACIÓN REGISTRADOS CORRECTAMENTE");
         AddRowToJtable(listFactura, indexUs);
@@ -244,7 +244,7 @@ public class facturaFrame extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    public static void AddRowToJtable(LinkedList<factura> listFactura, int index){
+    public static void AddRowToJtable(LinkedList<Factura> listFactura, int index){
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         // DELETE
         if (model.getRowCount() > 0) {
@@ -261,7 +261,7 @@ public class facturaFrame extends javax.swing.JFrame {
         } 
     }
     
-    public static int getIndex(String nit, LinkedList<factura> listFactura){
+    public static int getIndex(String nit, LinkedList<Factura> listFactura){
         for(int i=0; i<listFactura.size(); i++){
             if(listFactura.get(i).getNit().equals(nit)){
                 return i;
@@ -270,7 +270,7 @@ public class facturaFrame extends javax.swing.JFrame {
         return 0;
     }
     
-    public static void validate(int pos, LinkedList<factura> listFactura, String direccion, String name){
+    public static void validate(int pos, LinkedList<Factura> listFactura, String direccion, String name){
         String address = listFactura.get(pos).getDireccion();
         String name2 = listFactura.get(pos).getNombre();
         
@@ -308,14 +308,15 @@ public class facturaFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(facturaFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FacturaFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(facturaFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FacturaFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(facturaFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FacturaFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(facturaFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FacturaFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

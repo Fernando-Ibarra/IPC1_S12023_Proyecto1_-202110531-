@@ -10,13 +10,13 @@ import java.util.LinkedList;
  *
  * @author fi944
  */
-public class tarjeta {
+public class Tarjeta {
     private String nombre;
     private String numeroT;
     private String fechaVen;
     private String dpi;
 
-    public tarjeta(String nombre, String numeroT, String fechaVen, String dpi) {
+    public Tarjeta(String nombre, String numeroT, String fechaVen, String dpi) {
         this.nombre = nombre;
         this.numeroT = numeroT;
         this.fechaVen = fechaVen;
@@ -74,5 +74,5 @@ public class tarjeta {
         this.dpi = dpi;
     }
 
-    public static LinkedList<tarjeta> listCard = new LinkedList<>();
+    public static LinkedList<Tarjeta> listCard = new LinkedList<>();
 }

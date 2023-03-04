@@ -4,11 +4,11 @@
  */
 package Vistas;
 
-import controlador.departamento;
-import static controlador.departamento.listDepartamento;
-import controlador.municipio;
-import static controlador.municipio.listMucipio;
-import static controlador.region.listReg;
+import controlador.Departamento;
+import static controlador.Departamento.listDepartamento;
+import controlador.Municipio;
+import static controlador.Municipio.listMucipio;
+import static controlador.Region.listReg;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -18,14 +18,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author fi944
  */
-public class municipioFrame extends javax.swing.JFrame {
+public class MunicipioFrame extends javax.swing.JFrame {
     
-    menuAdmin mA = new menuAdmin();
+    MenuAdmin mA = new MenuAdmin();
 
     /**
      * Creates new form municipioFrame
      */
-    public municipioFrame() {
+    public MunicipioFrame() {
         initComponents();
         
         for(int i = 0; i < listDepartamento.size(); i++) {
@@ -193,7 +193,7 @@ public class municipioFrame extends javax.swing.JFrame {
         String cod = jTextField1.getText();
         String name = jTextField2.getText();
         int depar = jComboBox1.getSelectedIndex();
-        municipio mun = new municipio(cod, name, listDepartamento.get(depar));
+        Municipio mun = new Municipio(cod, name, listDepartamento.get(depar));
         listMucipio.add(mun);
         AddRowToJtable(listMucipio);
         JOptionPane.showMessageDialog(null, "MUNICIPIO REGISTRADO");
@@ -226,7 +226,7 @@ public class municipioFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     
-    public static void AddRowToJtable(LinkedList<municipio> listMucipio){
+    public static void AddRowToJtable(LinkedList<Municipio> listMucipio){
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         // DELETE
         if (model.getRowCount() > 0) {
@@ -241,7 +241,7 @@ public class municipioFrame extends javax.swing.JFrame {
         } 
     }
     
-    public static int getIndex(String cod, LinkedList<municipio> listMucipio){
+    public static int getIndex(String cod, LinkedList<Municipio> listMucipio){
     for(int i=0; i<listMucipio.size(); i++){
             if(listMucipio.get(i).getCod().equals(cod)){
                 return i;
@@ -250,9 +250,9 @@ public class municipioFrame extends javax.swing.JFrame {
         return 0;
     }
 
-    public static void validate(int pos, LinkedList<municipio> listMucipio, String name, int depar){
+    public static void validate(int pos, LinkedList<Municipio> listMucipio, String name, int depar){
         String nombre = listMucipio.get(pos).getName();
-        departamento depart = listMucipio.get(pos).getDepar();
+        Departamento depart = listMucipio.get(pos).getDepar();
         
         if(name.length()>0){
             listMucipio.get(pos).setName(name);
@@ -288,20 +288,21 @@ public class municipioFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(municipioFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MunicipioFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(municipioFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MunicipioFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(municipioFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MunicipioFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(municipioFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MunicipioFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new municipioFrame().setVisible(true);
+                new MunicipioFrame().setVisible(true);
             }
         });
     }

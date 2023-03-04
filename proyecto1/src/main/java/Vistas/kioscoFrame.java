@@ -4,10 +4,10 @@
  */
 package Vistas;
 
-import controlador.kiosco;
-import static controlador.kiosco.listKiosco;
-import controlador.region;
-import static controlador.region.listReg;
+import controlador.Kiosco;
+import static controlador.Kiosco.listKiosco;
+import controlador.Region;
+import static controlador.Region.listReg;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -16,14 +16,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author fi944
  */
-public class kioscoFrame extends javax.swing.JFrame {
+public class KioscoFrame extends javax.swing.JFrame {
     
-    menuAdmin mA = new menuAdmin();
+    MenuAdmin mA = new MenuAdmin();
 
     /**
      * Creates new form kioscoFrame
      */
-    public kioscoFrame() {
+    public KioscoFrame() {
         initComponents();
         
         for(int i = 0; i < listReg.size(); i++) {
@@ -191,7 +191,7 @@ public class kioscoFrame extends javax.swing.JFrame {
         String cod = jTextField1.getText();
         String name = jTextField2.getText();
         int regions = jComboBox1.getSelectedIndex();
-        kiosco kios = new kiosco(cod, name, listReg.get(regions));
+        Kiosco kios = new Kiosco(cod, name, listReg.get(regions));
         listKiosco.add(kios);
         AddRowToJtable(listKiosco);
         JOptionPane.showMessageDialog(null, "KIOSCO REGISTRADO");
@@ -224,7 +224,7 @@ public class kioscoFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     
-    public static void AddRowToJtable(LinkedList<kiosco> listKiosco){
+    public static void AddRowToJtable(LinkedList<Kiosco> listKiosco){
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         // DELETE
         if (model.getRowCount() > 0) {
@@ -239,7 +239,7 @@ public class kioscoFrame extends javax.swing.JFrame {
         } 
     }
     
-    public static int getIndex(String cod, LinkedList<kiosco> listKiosco){
+    public static int getIndex(String cod, LinkedList<Kiosco> listKiosco){
         for(int i=0; i<listKiosco.size(); i++){
             if(listKiosco.get(i).getCodigo().equals(cod)){
                 return i;
@@ -248,9 +248,9 @@ public class kioscoFrame extends javax.swing.JFrame {
         return 0;
     }
     
-    public static void validate(int pos, LinkedList<kiosco> listKiosco, String nombre, int reg){
+    public static void validate(int pos, LinkedList<Kiosco> listKiosco, String nombre, int reg){
         String name = listKiosco.get(pos).getNombre();
-        region region = listKiosco.get(pos).getReg();
+        Region region = listKiosco.get(pos).getReg();
         
         if(nombre.length()>0){
             listKiosco.get(pos).setNombre(nombre);
@@ -286,20 +286,21 @@ public class kioscoFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(kioscoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KioscoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(kioscoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KioscoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(kioscoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KioscoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(kioscoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KioscoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new kioscoFrame().setVisible(true);
+                new KioscoFrame().setVisible(true);
             }
         });
     }

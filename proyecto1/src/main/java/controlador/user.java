@@ -10,7 +10,7 @@ import java.util.LinkedList;
  *
  * @author fi944
  */
-public class user extends autenticador {
+public class User extends Autenticador {
     
     private String nombre;
     private String apellido;
@@ -22,7 +22,7 @@ public class user extends autenticador {
     private String telefono;
     private String path;
 
-    public user(String nombre, String apellido, String dpi, String genero, String fechaN, String nacionalidad, String alias, String telefono, String path, String correo, String password, String rol) {
+    public User(String nombre, String apellido, String dpi, String genero, String fechaN, String nacionalidad, String alias, String telefono, String path, String correo, String password, String rol) {
         super(correo, password, rol);
         this.nombre = nombre;
         this.apellido = apellido;
@@ -107,15 +107,15 @@ public class user extends autenticador {
         this.path = path;
     }
 
-    public static LinkedList<user> getListUser() {
+    public static LinkedList<User> getListUser() {
         return listUser;
     }
 
-    public static void setListUser(LinkedList<user> listUser) {
-        user.listUser = listUser;
+    public static void setListUser(LinkedList<User> listUser) {
+        User.listUser = listUser;
     }
 
 
     
-    public static LinkedList<user> listUser = new LinkedList<>();
+    public static LinkedList<User> listUser = new LinkedList<>();
 }
