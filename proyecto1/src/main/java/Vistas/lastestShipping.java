@@ -8,6 +8,10 @@ import static Vistas.Login.indexUser;
 import controlador.compra;
 import static controlador.compra.listSolds;
 import static controlador.user.listUser;
+import static controlador.utils.guidePack;
+import static controlador.utils.headCheck;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.LinkedList;
 import javax.swing.table.DefaultTableModel;
 
@@ -16,6 +20,7 @@ import javax.swing.table.DefaultTableModel;
  * @author fi944
  */
 public class lastestShipping extends javax.swing.JFrame {
+
     public int index = indexUser;
 
     /**
@@ -24,7 +29,7 @@ public class lastestShipping extends javax.swing.JFrame {
     public lastestShipping() {
         initComponents();
         AddRowToJtable(listSolds);
-        
+
     }
 
     /**
@@ -79,9 +84,19 @@ public class lastestShipping extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton2.setText("FACTURA");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton3.setText("GUÍA");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -132,22 +147,48 @@ public class lastestShipping extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    public static void AddRowToJtable(LinkedList<compra> listSolds){
-        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String cod = jTextField1.getText();
+        String facturaHtml = headCheck(cod, listSolds);
+        try {
+            try (FileWriter myWriter = new FileWriter("C:\\Users\\fi944\\Downloads\\factura_" + cod + ".html")) {
+                myWriter.write(facturaHtml);
+            }
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        String cod = jTextField1.getText();
+        String guideHtml = guidePack(cod, listSolds);
+        try {
+            try (FileWriter myWriter = new FileWriter("C:\\Users\\fi944\\Downloads\\guia_" + cod + ".html")) {
+                myWriter.write(guideHtml);
+            }
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    public static void AddRowToJtable(LinkedList<compra> listSolds) {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         // DELETE
         if (model.getRowCount() > 0) {
             for (int i = model.getRowCount() - 1; i > -1; i--) {
                 model.removeRow(i);
             }
         }
-        
+
         // PUT
-        for(int i=0; i<listSolds.size(); i++){
-            if(listSolds.get(i).getDpi().equals(listUser.get(indexUser).getDpi())){
+        for (int i = 0; i < listSolds.size(); i++) {
+            if (listSolds.get(i).getDpi().equals(listUser.get(indexUser).getDpi())) {
                 model.addRow(new Object[]{listSolds.get(i).getCod(), listSolds.get(i).getTypeSend(), listSolds.get(i).getDestinatario(), listSolds.get(i).getTotal(), listSolds.get(i).getTypePay()});
             }
-        } 
-        
+        }
+
     }
 
     /**

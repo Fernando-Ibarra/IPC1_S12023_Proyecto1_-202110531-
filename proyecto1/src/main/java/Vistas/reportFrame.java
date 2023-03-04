@@ -213,7 +213,9 @@ public class reportFrame extends javax.swing.JFrame {
         
         // PUT
         for(int i=0; i<listRegionSolds.size(); i++){
-            model.addRow(new Object[]{listRegionSolds.get(i).getReg(), listRegionSolds.get(i).getCantidad()});
+            if(listRegionSolds.get(i).getCantidad() > 0){
+                model.addRow(new Object[]{listRegionSolds.get(i).getReg(), listRegionSolds.get(i).getCantidad()});
+            }
         } 
     }
     
@@ -228,7 +230,9 @@ public class reportFrame extends javax.swing.JFrame {
         
         // PUT
         for(int i=0; i<listUserSolds.size(); i++){
-            model.addRow(new Object[]{listUserSolds.get(i).getName() + " " + listUserSolds.get(i).getApellido(), listUserSolds.get(i).getCantidad()});
+            if(listUserSolds.get(i).getCantidad()> 0){
+                model.addRow(new Object[]{listUserSolds.get(i).getName() + " " + listUserSolds.get(i).getApellido(), listUserSolds.get(i).getCantidad()});
+            }
         }
     }
     

@@ -16,8 +16,14 @@ import static controlador.tarjeta.listCard;
 import static controlador.user.listUser;
 import controlador.userSends;
 import static controlador.userSends.listUserSolds;
+import static controlador.utils.guidePack;
+import static controlador.utils.headCheck;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,6 +31,7 @@ import javax.swing.JOptionPane;
  * @author fi944
  */
 public class pagoFrame extends javax.swing.JFrame {
+
     public int indexUs = indexUser;
     public static LinkedList<String> listFact = new LinkedList<>();
     private static String idSold;
@@ -34,33 +41,33 @@ public class pagoFrame extends javax.swing.JFrame {
      */
     public pagoFrame() {
         initComponents();
-        
-        for(int i = 0; i < listDepartamento.size(); i++) {
+
+        for (int i = 0; i < listDepartamento.size(); i++) {
             jComboBox1.addItem(listDepartamento.get(i).getCod() + " - " + listDepartamento.get(i).getName());
         }
-        
-        for(int i = 0; i < listMucipio.size(); i++) {
+
+        for (int i = 0; i < listMucipio.size(); i++) {
             jComboBox2.addItem(listMucipio.get(i).getCod() + " - " + listMucipio.get(i).getName());
         }
-        
-        for(int i = 0; i < listDepartamento.size(); i++) {
+
+        for (int i = 0; i < listDepartamento.size(); i++) {
             jComboBox3.addItem(listDepartamento.get(i).getCod() + " - " + listDepartamento.get(i).getName());
         }
-        
-        for(int i = 0; i < listMucipio.size(); i++) {
+
+        for (int i = 0; i < listMucipio.size(); i++) {
             jComboBox4.addItem(listMucipio.get(i).getCod() + " - " + listMucipio.get(i).getName());
         }
-        
+
         // TARJETA
-        for(int i = 0; i < listCard.size(); i++) {
-            if(listCard.get(i).getDpi().equals(listUser.get(indexUser).getDpi())){
-                jComboBox9.addItem(listCard.get(i).getNombre()+ " - " + listCard.get(i).getNumeroT()+ " - " + listCard.get(i).getFechaVen() );
+        for (int i = 0; i < listCard.size(); i++) {
+            if (listCard.get(i).getDpi().equals(listUser.get(indexUser).getDpi())) {
+                jComboBox9.addItem(listCard.get(i).getNombre() + " - " + listCard.get(i).getNumeroT() + " - " + listCard.get(i).getFechaVen());
             }
         }
-        
+
         // FACTURA
-        for(int i = 0; i < listFactura.size(); i++) {
-            if(listFactura.get(i).getDpi().equals(listUser.get(indexUser).getDpi())){
+        for (int i = 0; i < listFactura.size(); i++) {
+            if (listFactura.get(i).getDpi().equals(listUser.get(indexUser).getDpi())) {
                 jComboBox8.addItem(listFactura.get(i).getNombre() + " - " + listFactura.get(i).getDireccion() + " - " + listFactura.get(i).getNit());
                 listFact.add(listFactura.get(i).getNit());
             }
@@ -369,6 +376,11 @@ public class pagoFrame extends javax.swing.JFrame {
 
         jButton4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton4.setText("IMPRIMIR GUÍA");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton5.setText("SALIR");
@@ -587,20 +599,23 @@ public class pagoFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int deparD = jComboBox3.getSelectedIndex();
-        
-        int cantidad =  Integer.parseInt(jTextField3.getText());
+
+        int cantidad = Integer.parseInt(jTextField3.getText());
         String type = jComboBox5.getSelectedItem().toString();
         int price;
         price = switch (type) {
-            case "Pequeño" -> 20;
-            case "Mediano" -> 35;
-            default -> 50;
+            case "Pequeño" ->
+                20;
+            case "Mediano" ->
+                35;
+            default ->
+                50;
         };
-        
+
         double transpoE = listDepartamento.get(deparD).getReg().getPriceE();
         double transpoS = listDepartamento.get(deparD).getReg().getPriceS();
-        String totalE = Double.toString(transpoE * price* cantidad);
-        String totalS = Double.toString(transpoS * price* cantidad);
+        String totalE = Double.toString(transpoE * price * cantidad);
+        String totalS = Double.toString(transpoS * price * cantidad);
         jLabel17.setText(totalE);
         jLabel18.setText(totalS);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -612,68 +627,67 @@ public class pagoFrame extends javax.swing.JFrame {
         int deparD = jComboBox3.getSelectedIndex();
         int muniD = jComboBox4.getSelectedIndex();
         String direD = jTextField2.getText();
-        
-        int cantidad =  Integer.parseInt(jTextField3.getText());
+
+        int cantidad = Integer.parseInt(jTextField3.getText());
         String type = jComboBox5.getSelectedItem().toString();
         int price;
         price = switch (type) {
-            case "Pequeño" -> 20;
-            case "Mediano" -> 35;
-            default -> 50;
+            case "Pequeño" ->
+                20;
+            case "Mediano" ->
+                35;
+            default ->
+                50;
         };
-        
+
         double transpoE = listDepartamento.get(deparD).getReg().getPriceE();
         double transpoS = listDepartamento.get(deparD).getReg().getPriceS();
-        String totalE = Double.toString(transpoE * price* cantidad);
-        String totalS = Double.toString(transpoS * price* cantidad);
-        
+        String totalE = Double.toString(transpoE * price * cantidad);
+        String totalS = Double.toString(transpoS * price * cantidad);
+
         String typeSend = jComboBox6.getSelectedItem().toString();
         String typePaid = jComboBox7.getSelectedItem().toString();
         double finalT = 0;
-        if(typeSend.equals("Estándar") && typePaid.equals("Contra-Entrega")){
+        if (typeSend.equals("Estándar") && typePaid.equals("Contra-Entrega")) {
             finalT = Double.parseDouble(totalE) + 5;
-        } 
-        
-        if(typeSend.equals("Estándar") && typePaid.equals("Tarjeta")){
+        }
+
+        if (typeSend.equals("Estándar") && typePaid.equals("Tarjeta")) {
             finalT = Double.parseDouble(totalE);
         }
-        
-        if(typeSend.equals("Especial") && typePaid.equals("Contra-Entrega")){
+
+        if (typeSend.equals("Especial") && typePaid.equals("Contra-Entrega")) {
             finalT = Double.parseDouble(totalS) + 5;
-        } 
-        
-        if(typeSend.equals("Especial") && typePaid.equals("Tarjeta")){
+        }
+
+        if (typeSend.equals("Especial") && typePaid.equals("Tarjeta")) {
             finalT = Double.parseDouble(totalS);
         }
-        
+
         int dataCheck = jComboBox8.getSelectedIndex();
-        
+
         String nit = listFact.get(dataCheck);
-        
+
         String pt1 = "IPC1F";
         String pt2 = codSold();
         idSold = pt1 + pt2;
-        
+
         String destinatario = jTextField5.getText();
-        
-        compra cp = new compra(idSold, finalT, typePaid, nit, listUser.get(indexUser).getDpi(), typeSend, destinatario,listDepartamento.get(deparO), listMucipio.get(muniO), direO, listDepartamento.get(deparD), listMucipio.get(muniD), direD, cantidad, type);
+
+        compra cp = new compra(idSold, finalT, typePaid, nit, listUser.get(indexUser).getDpi(), typeSend, destinatario, listDepartamento.get(deparO), listMucipio.get(muniO), direO, listDepartamento.get(deparD), listMucipio.get(muniD), direD, cantidad, type);
         listSolds.add(cp);
         JOptionPane.showMessageDialog(null, "ENVIO REGISTRADO CORRECTAMENTE");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        for(int i = 0; i < listSolds.size(); i++) {
-            if(listSolds.get(i).getCod().equals(idSold)){
-                System.out.println("FACTURA: " + i);
-                System.out.println("CÓDIGO PAQUETE: " + listSolds.get(i).getCod());
-                System.out.println("ORIGEN: " + listSolds.get(i).getDepartamentoO().getName() + ", " + listSolds.get(i).getMunicipioO().getName() + ", " + listSolds.get(i).getDireccionO());
-                System.out.println("DESTINO: " + listSolds.get(i).getDepartamentoD().getName() + ", " + listSolds.get(i).getMunicipioD().getName() + ", " + listSolds.get(i).getDireccionD());
-                System.out.println("NIT: " + listSolds.get(i).getFacturacion());
-                System.out.println("TIPO DE PAGO: " + listSolds.get(i).getTypePay());
-                System.out.println("TAMAÑO PAQUETE: "  + listSolds.get(i).getSizepackage());
-                System.out.println("CANTIDAD: " + listSolds.get(i).getCantidadPaquetes());
-                System.out.println("TOTAL: " + listSolds.get(i).getTotal());
+        String facturaHtml = headCheck(idSold, listSolds);
+        try {
+            try (FileWriter myWriter = new FileWriter("C:\\Users\\fi944\\Downloads\\factura_"+idSold+".html")) {
+                myWriter.write(facturaHtml);
             }
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -683,24 +697,35 @@ public class pagoFrame extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    
-    public static char charMayusCod(){
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        String guideHtml = guidePack(idSold, listSolds);
+        try {
+            try (FileWriter myWriter = new FileWriter("C:\\Users\\fi944\\Downloads\\guia_"+idSold+".html")) {
+                myWriter.write(guideHtml);
+            }
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    public static char charMayusCod() {
         Random rnd = new Random();
-        return (char)(rnd.nextInt(26) + 'A');
+        return (char) (rnd.nextInt(26) + 'A');
     }
-    
-    public static char charMinusCod(){
+
+    public static char charMinusCod() {
         Random rnd = new Random();
-        return (char)(rnd.nextInt(26) + 'a');
+        return (char) (rnd.nextInt(26) + 'a');
     }
-    
-    public static int numberCod(){
+
+    public static int numberCod() {
         Random rnd = new Random();
         int n = rnd.nextInt(0, 9);
         return n;
     }
-    
-    public static String codSold(){
+
+    public static String codSold() {
         char a = charMayusCod();
         char b = charMinusCod();
         int n = numberCod();
@@ -708,6 +733,7 @@ public class pagoFrame extends javax.swing.JFrame {
         String cod = a + "_" + b + n + c;
         return cod;
     }
+
     /**
      * @param args the command line arguments
      */
