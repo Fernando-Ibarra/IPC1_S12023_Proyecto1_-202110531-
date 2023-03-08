@@ -5,9 +5,9 @@
 package Vistas;
 
 import controlador.Departamento;
-import static controlador.Departamento.listDepartamento;
+import static controlador.Utils.listDepartamento;
 import controlador.Region;
-import static controlador.Region.listReg;
+import static controlador.Utils.listReg;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;

@@ -7,7 +7,8 @@ package com.mycompany.proyecto1;
 import Vistas.Login; 
 import controlador.Region;
 import controlador.User;
-import static controlador.User.listUser;
+import controlador.Utils;
+import static controlador.Utils.listUser;
 
 /**
  *
@@ -22,12 +23,12 @@ public class Proyecto1 {
         Region reg4 = new Region("SO", "Suroriente", 38.68, 32.48);
         Region reg5 = new Region("SOC", "Suroccidente",  34.00, 29.00);
         Region reg6 = new Region("NOC", "Noroccidente", 44.50,  40.00);
-        Region.listReg.add(reg1);
-        Region.listReg.add(reg2);
-        Region.listReg.add(reg3);
-        Region.listReg.add(reg4);
-        Region.listReg.add(reg5);
-        Region.listReg.add(reg6);
+        Utils.listReg.add(reg1);
+        Utils.listReg.add(reg2);
+        Utils.listReg.add(reg3);
+        Utils.listReg.add(reg4);
+        Utils.listReg.add(reg5);
+        Utils.listReg.add(reg6);
         listUser.add(myUser);
         Login log = new Login();
         log.setVisible(true);

@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package controlador;
-
 import java.time.LocalDate;
 import java.util.LinkedList;
 
@@ -12,6 +11,17 @@ import java.util.LinkedList;
  * @author fi944
  */
 public class Utils {
+
+    public static LinkedList<Compra> listSolds = new LinkedList<>();
+    public static LinkedList<Departamento> listDepartamento = new LinkedList<>();
+    public static LinkedList<Factura> listFactura = new LinkedList<>();
+    public static LinkedList<Kiosco> listKiosco = new LinkedList<>();
+    public static LinkedList<Municipio> listMucipio = new LinkedList<>();
+    public static LinkedList<Region> listReg = new LinkedList<>();
+    public static LinkedList<RegionSends> listRegionSolds = new LinkedList<>();
+    public static LinkedList<Tarjeta> listCard = new LinkedList<>();
+    public static LinkedList<User> listUser = new LinkedList<>();
+    public static LinkedList<UserSends> listUserSolds = new LinkedList<>();
 
     public static void regionSendsOrder(LinkedList<RegionSends> listRegionSolds, LinkedList<Compra> listSolds, LinkedList<Region> listReg) {
 
@@ -64,13 +74,13 @@ public class Utils {
                 manda = listUser.get(i).getNombre() + " " + listUser.get(i).getApellido();
             }
         }
-        
+
         for (int i = 0; i < listFactura.size(); i++) {
             if (listFactura.get(i).getDpi().equals(listSolds.get(index).getDpi())) {
                 address = listFactura.get(i).getDireccion();
             }
         }
-        
+
         String encabezado = "<!DOCTYPE html>\n"
                 + "<html lang=\"es\">\n"
                 + "<head>\n"
@@ -358,6 +368,5 @@ public class Utils {
                 + "</html>";
         return texto;
     }
-;
 
 }

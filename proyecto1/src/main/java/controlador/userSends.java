@@ -3,9 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package controlador;
-
-import java.util.LinkedList;
-
 /**
  *
  * @author fi944
@@ -55,17 +52,4 @@ public class UserSends {
         this.cantidad = cantidad;
     }
 
-    public static LinkedList<UserSends> getListUserSolds() {
-        return listUserSolds;
-    }
-
-    public static void setListUserSolds(LinkedList<UserSends> listUserSolds) {
-        UserSends.listUserSolds = listUserSolds;
-    }
-
-
-
-
-    
-    public static LinkedList<UserSends> listUserSolds = new LinkedList<>();
 }

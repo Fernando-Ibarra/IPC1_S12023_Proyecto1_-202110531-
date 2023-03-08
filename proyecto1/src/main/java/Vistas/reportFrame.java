@@ -4,13 +4,13 @@
  */
 package Vistas;
 
-import static controlador.Compra.listSolds;
-import static controlador.Region.listReg;
+import static controlador.Utils.listSolds;
+import static controlador.Utils.listReg;
 import controlador.RegionSends;
-import static controlador.RegionSends.listRegionSolds;
-import static controlador.User.listUser;
+import static controlador.Utils.listRegionSolds;
+import static controlador.Utils.listUser;
 import controlador.UserSends;
-import static controlador.UserSends.listUserSolds;
+import static controlador.Utils.listUserSolds;
 import static controlador.Utils.regionSendsOrder;
 import static controlador.Utils.userSendsOrder;
 import java.util.LinkedList;

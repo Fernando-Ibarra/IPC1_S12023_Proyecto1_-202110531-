@@ -3,9 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package controlador;
-
-import java.util.LinkedList;
-
 /**
  *
  * @author fi944
@@ -35,15 +32,4 @@ public class RegionSends {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
-
-    public static LinkedList<RegionSends> getListRegionSolds() {
-        return listRegionSolds;
-    }
-
-    public static void setListRegionSolds(LinkedList<RegionSends> listRegionSolds) {
-        RegionSends.listRegionSolds = listRegionSolds;
-    }
-
-    public static LinkedList<RegionSends> listRegionSolds = new LinkedList<>();
-    
 }

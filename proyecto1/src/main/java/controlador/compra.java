@@ -3,9 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package controlador;
-
-import java.util.LinkedList;
-
 /**
  *
  * @author fi944
@@ -85,16 +82,5 @@ public class Compra extends Cotizacion {
 
     public void setDestinatario(String destinatario) {
         this.destinatario = destinatario;
-    }
-
-    public static LinkedList<Compra> getListSolds() {
-        return listSolds;
-    }
-
-    public static void setListSolds(LinkedList<Compra> listSolds) {
-        Compra.listSolds = listSolds;
-    }
-
-    public static LinkedList<Compra> listSolds = new LinkedList<>();
-    
+    }   
 }

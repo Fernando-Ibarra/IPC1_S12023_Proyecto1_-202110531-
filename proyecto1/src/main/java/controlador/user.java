@@ -3,9 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package controlador;
-
-import java.util.LinkedList;
-
 /**
  *
  * @author fi944
@@ -106,16 +103,5 @@ public class User extends Autenticador {
     public void setPath(String path) {
         this.path = path;
     }
-
-    public static LinkedList<User> getListUser() {
-        return listUser;
-    }
-
-    public static void setListUser(LinkedList<User> listUser) {
-        User.listUser = listUser;
-    }
-
-
     
-    public static LinkedList<User> listUser = new LinkedList<>();
 }

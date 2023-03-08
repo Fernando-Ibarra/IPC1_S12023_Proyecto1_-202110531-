@@ -8,8 +8,8 @@ import controlador.Factura;
 import java.util.LinkedList;
 import javax.swing.table.DefaultTableModel;
 import static Vistas.Login.indexUser;
-import static controlador.Factura.listFactura;
-import static controlador.User.listUser;
+import static controlador.Utils.listFactura;
+import static controlador.Utils.listUser;
 import javax.swing.JOptionPane;
 
 /**

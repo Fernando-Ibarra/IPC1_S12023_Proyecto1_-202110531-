@@ -3,9 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package controlador;
-
-import java.util.LinkedList;
-
 /**
  *
  * @author fi944
@@ -46,5 +43,4 @@ public class Departamento {
         this.reg = reg;
     }
     
-    public static LinkedList<Departamento> listDepartamento = new LinkedList<>();
 }

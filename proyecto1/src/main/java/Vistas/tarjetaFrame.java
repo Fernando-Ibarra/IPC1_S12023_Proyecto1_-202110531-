@@ -6,8 +6,8 @@ package Vistas;
 
 import static Vistas.Login.indexUser;
 import controlador.Tarjeta;
-import static controlador.Tarjeta.listCard;
-import static controlador.User.listUser;
+import static controlador.Utils.listCard;
+import static controlador.Utils.listUser;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;

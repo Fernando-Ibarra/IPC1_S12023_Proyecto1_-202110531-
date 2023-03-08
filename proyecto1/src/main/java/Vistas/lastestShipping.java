@@ -6,9 +6,9 @@ package Vistas;
 
 import static Vistas.Login.indexUser;
 import controlador.Compra;
-import static controlador.Compra.listSolds;
-import static controlador.Factura.listFactura;
-import static controlador.User.listUser;
+import static controlador.Utils.listSolds;
+import static controlador.Utils.listFactura;
+import static controlador.Utils.listUser;
 import static controlador.Utils.guidePack;
 import static controlador.Utils.headCheck;
 import java.io.FileWriter;

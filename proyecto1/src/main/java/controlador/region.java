@@ -3,9 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package controlador;
-
-import java.util.LinkedList;
-
 /**
  *
  * @author fi944
@@ -53,17 +50,5 @@ public class Region {
 
     public void setPriceS(double priceS) {
         this.priceS = priceS;
-    }
-
-    public static LinkedList<Region> getListReg() {
-        return listReg;
-    }
-
-    public static void setListReg(LinkedList<Region> listReg) {
-        Region.listReg = listReg;
-    }
-
-
-    public static LinkedList<Region> listReg = new LinkedList<>();
-    
+    }   
 }

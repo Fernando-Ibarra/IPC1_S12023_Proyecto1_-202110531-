@@ -5,7 +5,7 @@
 package Vistas;
 
 import controlador.User;
-import static controlador.User.listUser;
+import static controlador.Utils.listUser;
 import java.awt.Image;
 import java.io.File;
 import javax.swing.ImageIcon;

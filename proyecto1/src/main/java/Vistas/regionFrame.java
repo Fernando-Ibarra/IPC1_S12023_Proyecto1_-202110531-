@@ -5,7 +5,7 @@
 package Vistas;
 
 import controlador.Region;
-import static controlador.Region.listReg;
+import static controlador.Utils.listReg;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;

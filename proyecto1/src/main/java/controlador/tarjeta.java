@@ -3,9 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package controlador;
-
-import java.util.LinkedList;
-
 /**
  *
  * @author fi944
@@ -74,5 +71,5 @@ public class Tarjeta {
         this.dpi = dpi;
     }
 
-    public static LinkedList<Tarjeta> listCard = new LinkedList<>();
+    
 }

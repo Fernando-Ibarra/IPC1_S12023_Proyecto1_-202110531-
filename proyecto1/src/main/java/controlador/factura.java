@@ -3,9 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package controlador;
-
-import java.util.LinkedList;
-
 /**
  *
  * @author fi944
@@ -54,7 +51,4 @@ public class Factura {
     public void setDpi(String dpi) {
         this.dpi = dpi;
     }
-    
-    public static LinkedList<Factura> listFactura = new LinkedList<>();
-
 }

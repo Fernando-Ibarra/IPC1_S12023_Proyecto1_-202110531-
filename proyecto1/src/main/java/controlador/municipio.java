@@ -3,9 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package controlador;
-
-import java.util.LinkedList;
-
 /**
  *
  * @author fi944
@@ -44,7 +41,5 @@ public class Municipio {
 
     public void setDepar(Departamento depar) {
         this.depar = depar;
-    }
-    
-    public static LinkedList<Municipio> listMucipio = new LinkedList<>();
+    } 
 }
