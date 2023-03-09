@@ -120,8 +120,8 @@ public class MenuAdmin extends javax.swing.JFrame {
                         .addGap(8, 8, 8)))
                 .addGap(23, 23, 23))
             .addGroup(layout.createSequentialGroup()
-                .addGap(208, 208, 208)
-                .addComponent(jButton5)
+                .addGap(175, 175, 175)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -141,9 +141,9 @@ public class MenuAdmin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton6)
                     .addComponent(jButton7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton5)
-                .addGap(21, 21, 21))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
